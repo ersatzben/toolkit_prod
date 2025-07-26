@@ -1,36 +1,35 @@
 import styled from '@emotion/styled';
+import { newBrandColors } from './theme';
 
 // Define color variables for better maintainability
 const toolColors = {
-  primary: '#0B4938', // Dark Green
-  activeBg: '#E6F0ED',
-  activeHoverBg: '#D9E8E2',
-  inactiveHoverBg: '#F0F5F3',
-  tagBackground: '#E6F0ED', // Keep tool tags green
+  primary: newBrandColors.darkGreen,
+  activeBg: newBrandColors.brightGreen + '20',
+  activeHoverBg: newBrandColors.brightGreen + '30',
+  inactiveHoverBg: newBrandColors.lightBlue + '15',
+  tagBackground: newBrandColors.brightGreen + '20',
 };
 
 const objectiveColors = {
-  primary: '#093D77', // Dark Blue
-  activeBg: '#E7EFF9', // Light Blue
-  activeHoverBg: '#D0E0F3',
-  inactiveHoverBg: '#F0F7FC',
-  tagBackground: '#E7EFF9', // Objective related tags blue
+  primary: newBrandColors.darkBlue,
+  activeBg: newBrandColors.lightBlue + '30',
+  activeHoverBg: newBrandColors.lightBlue + '40',
+  inactiveHoverBg: newBrandColors.lightBlue + '15',
+  tagBackground: newBrandColors.lightBlue + '30',
 };
 
 const brandColors = {
-  darkGreen: '#0B4938',
-  beige: '#FDF9E9',
-  charcoal: '#283131',
+  darkGreen: newBrandColors.darkGreen,
+  beige: newBrandColors.beige,
+  charcoal: newBrandColors.charcoal,
 };
 
 const headerHeight = '70px';
 
 export const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column; // Changed for header layout
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+  background: ${newBrandColors.beige};
+  min-height: 100vh;
+  width: 100%;
 `;
 
 // New component to wrap Sidebar and MainContent, enabling them to scroll independently under a sticky header
@@ -41,7 +40,7 @@ export const ContentRow = styled.div`
 `;
 
 export const StickyHeader = styled.header`
-  background-color: ${brandColors.darkGreen};
+  background: linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
   color: ${brandColors.beige};
   padding: 0 25px;
   height: ${headerHeight};
@@ -84,7 +83,7 @@ export const HeaderNavLink = styled.a`
   transition: color 0.2s ease;
 
   &:hover {
-    color: #C5C0B0; // Slightly lighter beige or a different hover effect
+    color: ${newBrandColors.brightGreen};
     text-decoration: underline;
   }
 `;
@@ -98,7 +97,7 @@ export const Sidebar = styled.nav`
   width: 300px;
   background-color: #FFFFFF;
   padding: 10px;
-  border-right: 1px solid #D9E8E2;
+  border-right: 2px solid ${newBrandColors.lightBlue}50;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -151,7 +150,7 @@ export const ToolListItem = styled.li<{ active: boolean; itemType?: 'tool' | 'ob
   color: ${props => 
     props.active 
       ? (props.itemType === 'objective' ? objectiveColors.primary : toolColors.primary) 
-      : '#333'};
+      : newBrandColors.charcoal};
   
   &:hover {
     background-color: ${props => 
@@ -167,16 +166,16 @@ type ComponentVariant = 'filter';
 
 export const Section = styled.section<{ variant?: ComponentVariant }>`
   margin-bottom: ${props => props.variant === 'filter' ? '20px' : '32px'};
-  border: 1px solid ${props => props.variant === 'filter' ? '#E0E0E0' : '#D9E8E2'}; // Lighter border for filter
+  border: 1px solid ${props => props.variant === 'filter' ? newBrandColors.lightBlue + '40' : newBrandColors.lightBlue + '50'};
   border-radius: ${props => props.variant === 'filter' ? '8px' : '12px'};
-  padding: ${props => props.variant === 'filter' ? '10px' : '28px'}; // Changed filter padding from 20px to 10px
-  box-shadow: ${props => props.variant === 'filter' ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.05)'}; // No shadow for filter
-  background-color: ${props => props.variant === 'filter' ? '#F9F9F9' : '#ffffff'}; // Different bg for filter
+  padding: ${props => props.variant === 'filter' ? '10px' : '28px'};
+  box-shadow: ${props => props.variant === 'filter' ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.05)'};
+  background-color: ${props => props.variant === 'filter' ? newBrandColors.beige + '80' : '#ffffff'};
   transition: all 0.2s ease;
 
   &:hover {
     box-shadow: ${props => props.variant === 'filter' ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.08)'};
-    border-color: ${props => props.variant === 'filter' ? '#CCCCCC' : '#D9E8E2'};
+    border-color: ${props => props.variant === 'filter' ? newBrandColors.lightBlue + '60' : newBrandColors.lightBlue + '70'};
   }
 `;
 
@@ -186,7 +185,7 @@ export const SectionTitle = styled.h2<{ itemType?: 'tool' | 'objective'; variant
   font-size: ${props => props.variant === 'filter' ? '1.1rem' : '1.6rem'}; // Smaller for filter
   font-weight: ${props => props.variant === 'filter' ? '500' : '600'};
   padding-bottom: ${props => props.variant === 'filter' ? '8px' : '16px'};
-  border-bottom: 1px solid ${props => props.variant === 'filter' ? '#E0E0E0' : '#E6F0ED'}; // Lighter for filter
+  border-bottom: 1px solid ${props => props.variant === 'filter' ? newBrandColors.lightBlue + '40' : newBrandColors.brightGreen + '30'};
 `;
 
 export const TitleContainer = styled.div`
@@ -211,7 +210,7 @@ export const PageTitle = styled.h1`
   margin: 0;
   font-size: 2.2rem;
   font-weight: 700;
-  color: #283131;
+  color: ${newBrandColors.charcoal};
 `;
 
 export const SidebarTitle = styled.h2<{ itemType?: 'tool' | 'objective' }>`
@@ -219,7 +218,7 @@ export const SidebarTitle = styled.h2<{ itemType?: 'tool' | 'objective' }>`
   margin-top: 0;
   margin-bottom: 10px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${newBrandColors.lightBlue}50;
   color: ${(props) => (props.itemType === 'tool' ? toolColors.primary : objectiveColors.primary)};
   cursor: pointer;
 `;
@@ -229,16 +228,16 @@ export const SidebarSubheading = styled.h3`
   font-weight: 800;
   margin-top: 10px;
   margin-bottom: 5px;
-  padding-left: 8px; // Reduced from 12px to nudge left
-  color: ${objectiveColors.primary}; // Changed to dark blue
+  padding-left: 8px;
+  color: ${objectiveColors.primary};
 `;
 
 export const SubSection = styled.div<{ variant?: ComponentVariant }>`
   margin-bottom: ${props => props.variant === 'filter' ? '4px' : '24px'}; // Changed filter margin-bottom from 8px to 4px
   padding: ${props => props.variant === 'filter' ? '0px' : '20px'};
-  border: ${props => props.variant === 'filter' ? 'none' : '1px solid #E6F0ED'};
+  border: ${props => props.variant === 'filter' ? 'none' : `1px solid ${newBrandColors.lightBlue}50`};
   border-radius: ${props => props.variant === 'filter' ? '4px' : '8px'};
-  background-color: ${props => props.variant === 'filter' ? 'transparent' : '#F5FAF8'};
+  background-color: ${props => props.variant === 'filter' ? 'transparent' : `${newBrandColors.beige}80`};
   transition: all 0.2s ease;
 
   ${props => props.variant === 'filter' && `
@@ -308,19 +307,19 @@ export const TargetabilityGrid = styled.div`
 
 export const TargetabilityBox = styled.div`
   padding: 20px;
-  border: 1px solid #E6F0ED;
+  border: 1px solid ${newBrandColors.lightBlue}50;
   border-radius: 8px;
-  background-color: #F5FAF8;
+  background-color: ${newBrandColors.beige}80;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #D9E8E2;
+    border-color: ${newBrandColors.lightBlue}70;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   strong {
     display: inline;
-    color: #0B4938;
+    color: ${newBrandColors.darkGreen};
     margin-right: 6px;
     font-weight: 600;
   }
@@ -328,8 +327,9 @@ export const TargetabilityBox = styled.div`
   p {
     margin: 0;
     display: inline;
-    color: #4a4a4a;
+    color: ${newBrandColors.charcoal};
     line-height: 1.5;
+    opacity: 0.8;
   }
 `;
 
@@ -337,7 +337,8 @@ export const MarkdownText = styled.div`
   p {
     margin-bottom: 1.2em;
     line-height: 1.7;
-    color: #4a4a4a;
+    color: ${newBrandColors.charcoal};
+    opacity: 0.9;
     
     &:last-child {
       margin-bottom: 0;
@@ -346,21 +347,22 @@ export const MarkdownText = styled.div`
 
   strong {
     font-weight: 600;
-    color: #0B4938; /* Default to tool color, can be overridden by context */
+    color: ${newBrandColors.darkGreen};
   }
 
   em {
     font-style: italic;
-    color: #5c6b7a;
+    color: ${newBrandColors.charcoal};
+    opacity: 0.7;
   }
 
   p > code {
-    background-color: #F5FAF8;
+    background-color: ${newBrandColors.beige}80;
     padding: 3px 6px;
     border-radius: 4px;
     font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
     font-size: 0.9em;
-    color: #0B4938;
+    color: ${newBrandColors.darkGreen};
   }
 `;
 
@@ -376,20 +378,20 @@ export const FurtherReadingListItem = styled.li`
 `;
 
 export const FurtherReadingLink = styled.a`
-  color: #093D77;
+  color: ${newBrandColors.darkBlue};
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease, text-decoration 0.2s ease;
 
   &:hover,
   &:focus {
-    color: #80B7F4;
+    color: ${newBrandColors.lightBlue};
     text-decoration: underline;
   }
 `;
 
 export const FurtherReadingText = styled.span`
-  color: #283131;
+  color: ${newBrandColors.charcoal};
   font-weight: 500;
 `;
 
@@ -404,13 +406,13 @@ export const ToolLinkListItem = styled.li`
 `;
 
 export const ToolLink = styled.span`
-  color: #0B4938; 
+  color: ${newBrandColors.darkGreen}; 
   text-decoration: underline;
   cursor: pointer;
   font-weight: 500;
 
   &:hover {
-    color: #1a7d5f; 
+    color: ${newBrandColors.brightGreen}; 
   }
 `;
 
@@ -423,14 +425,15 @@ export const SearchInput = styled.input`
   width: 100%;
   padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #D9E8E2;
+  border: 2px solid ${newBrandColors.lightBlue}50;
   font-size: 0.9rem;
-  box-sizing: border-box; // Ensures padding doesn't add to width
+  box-sizing: border-box;
+  color: ${newBrandColors.charcoal};
 
   &:focus {
     outline: none;
     border-color: ${toolColors.primary};
-    box-shadow: 0 0 0 2px ${toolColors.activeBg};
+    box-shadow: 0 0 0 3px ${toolColors.activeBg};
   }
 `;
 
@@ -442,12 +445,12 @@ export const FilterChipContainer = styled.div`
 `;
 
 export const FilterChip = styled.span`
-  display: inline-flex; // To align text and button
+  display: inline-flex;
   align-items: center;
-  background-color: ${toolColors.primary}; // Using tool primary color for chips
-  color: #FFFFFF;
+  background: linear-gradient(135deg, ${newBrandColors.darkBlue} 0%, ${newBrandColors.darkGreen} 100%);
+  color: ${newBrandColors.beige};
   padding: 4px 8px;
-  border-radius: 4px; // Changed from 12px to 4px
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
   line-height: 1;
@@ -456,16 +459,16 @@ export const FilterChip = styled.span`
 export const RemoveChipButton = styled.button`
   background: none;
   border: none;
-  color: #FFFFFF;
+  color: ${newBrandColors.beige};
   margin-left: 6px;
   padding: 0;
   cursor: pointer;
-  font-size: 1rem; // Make X slightly larger for easier clicking
-  line-height: 1; // Ensure it aligns well
+  font-size: 1rem;
+  line-height: 1;
   font-weight: 700;
 
   &:hover {
-    color: #F0F5F3; // A lighter shade on hover
+    color: ${newBrandColors.lightRed};
   }
 `;
 
@@ -483,7 +486,37 @@ export const ClearFiltersButton = styled.button`
   display: inline-block; // To allow margin-top and ensure it doesn't take full width
 
   &:hover {
-    color: ${objectiveColors.primary}; // Change to a different color on hover, e.g., objective blue
+    color: ${objectiveColors.primary};
     background-color: transparent; // Ensure no background on hover
+  }
+`; 
+
+export const TopBannerContainer = styled.header`
+  background: ${newBrandColors.charcoal};
+  color: ${newBrandColors.beige};
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: ${newBrandColors.brightGreen};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const TopBannerText = styled.p`
+  margin: 0;
+  font-size: 0.75rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.25rem;
   }
 `; 

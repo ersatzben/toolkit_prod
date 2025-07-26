@@ -1,53 +1,79 @@
+export const newBrandColors = {
+  beige: '#FDF9E9',
+  brightGreen: '#81F494',
+  darkGreen: '#0B4938',
+  lightBlue: '#80B7F4',
+  darkBlue: '#093D77',
+  charcoal: '#283131',
+  orange: '#FE9F1C',
+  lightRed: '#FAC2C2',
+  deepRed: '#B3063E',
+};
+
 export const lightTheme = {
-  body: '#FFF',
-  text: '#363537',
-  toggleBorder: '#FFF',
-  background: '#F0F2F5', // Light grey background for the app
-  sidebarBackground: '#FFFFFF', // White sidebar
-  sidebarText: '#363537',
-  sidebarHighlight: '#E6F7FF', // Light blue for active items
-  mainContentBackground: '#FFFFFF', // White main content area
-  cardBackground: '#FFFFFF', // White for cards or detailed sections
-  borderColor: '#E8E8E8', // Light grey for borders
-  accentColor: '#1890ff', // Blue accent
-  accentColorObjective: '#52c41a', // Green accent for objectives
-  filterChipBackground: '#E6F7FF',
-  filterChipText: '#1890ff',
-  filterChipRemoveBackground: '#D9D9D9',
-  buttonBackground: '#1890ff',
-  buttonText: '#FFF',
+  body: newBrandColors.beige,
+  text: newBrandColors.charcoal,
+  toggleBorder: newBrandColors.lightBlue,
+  background: newBrandColors.beige,
+  sidebarBackground: '#FFFFFF',
+  sidebarText: newBrandColors.charcoal,
+  sidebarHighlight: newBrandColors.lightBlue + '30', // 30% opacity
+  mainContentBackground: '#FFFFFF',
+  cardBackground: '#FFFFFF',
+  borderColor: newBrandColors.lightBlue + '50', // 50% opacity
+  accentColor: newBrandColors.darkBlue,
+  accentColorObjective: newBrandColors.darkGreen,
+  accentColorTool: newBrandColors.darkBlue,
+  filterChipBackground: newBrandColors.lightBlue + '30',
+  filterChipText: newBrandColors.darkBlue,
+  filterChipRemoveBackground: newBrandColors.lightRed,
+  buttonBackground: newBrandColors.darkGreen,
+  buttonText: newBrandColors.beige,
+  buttonHover: newBrandColors.brightGreen,
   clearButtonBackground: 'transparent',
-  clearButtonText: '#8c8c8c',
-  clearButtonHoverBackground: '#f0f0f0',
+  clearButtonText: newBrandColors.charcoal,
+  clearButtonHoverBackground: newBrandColors.lightBlue + '20',
   searchInputBackground: '#FFF',
-  searchInputText: '#363537',
-  searchInputBorder: '#D9D9D9',
+  searchInputText: newBrandColors.charcoal,
+  searchInputBorder: newBrandColors.lightBlue,
+  primaryGradient: `linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%)`,
+  secondaryGradient: `linear-gradient(135deg, ${newBrandColors.lightBlue} 0%, ${newBrandColors.brightGreen} 100%)`,
+  warningColor: newBrandColors.orange,
+  errorColor: newBrandColors.deepRed,
+  successColor: newBrandColors.brightGreen,
 };
 
 export const darkTheme = {
-  body: '#1A202C', // Dark background for the app
-  text: '#E2E8F0', // Light grey text
-  toggleBorder: '#6B8096',
-  background: '#1A202C', // Dark overall background
-  sidebarBackground: '#2D3748', // Darker sidebar
-  sidebarText: '#E2E8F0',
-  sidebarHighlight: '#4A5568', // Darker highlight for active items
-  mainContentBackground: '#2D3748', // Darker main content area
-  cardBackground: '#4A5568', // Darker cards
-  borderColor: '#4A5568', // Darker borders
-  accentColor: '#63B3ED', // Lighter blue accent for dark mode
-  accentColorObjective: '#68D391', // Lighter green accent for objectives
-  filterChipBackground: '#3182CE', // Darker blue for filter chips
-  filterChipText: '#E2E8F0',
-  filterChipRemoveBackground: '#4A5568',
-  buttonBackground: '#63B3ED',
-  buttonText: '#1A202C',
+  body: newBrandColors.charcoal,
+  text: newBrandColors.beige,
+  toggleBorder: newBrandColors.lightBlue,
+  background: newBrandColors.charcoal,
+  sidebarBackground: '#1A1A1A',
+  sidebarText: newBrandColors.beige,
+  sidebarHighlight: newBrandColors.darkGreen + '50',
+  mainContentBackground: '#1A1A1A',
+  cardBackground: '#2A2A2A',
+  borderColor: newBrandColors.lightBlue + '30',
+  accentColor: newBrandColors.lightBlue,
+  accentColorObjective: newBrandColors.brightGreen,
+  accentColorTool: newBrandColors.lightBlue,
+  filterChipBackground: newBrandColors.darkGreen + '80',
+  filterChipText: newBrandColors.beige,
+  filterChipRemoveBackground: newBrandColors.deepRed,
+  buttonBackground: newBrandColors.darkGreen,
+  buttonText: newBrandColors.beige,
+  buttonHover: newBrandColors.brightGreen,
   clearButtonBackground: 'transparent',
-  clearButtonText: '#A0AEC0',
-  clearButtonHoverBackground: '#2D3748',
-  searchInputBackground: '#2D3748',
-  searchInputText: '#E2E8F0',
-  searchInputBorder: '#4A5568',
+  clearButtonText: newBrandColors.beige,
+  clearButtonHoverBackground: newBrandColors.darkGreen + '30',
+  searchInputBackground: '#2A2A2A',
+  searchInputText: newBrandColors.beige,
+  searchInputBorder: newBrandColors.lightBlue,
+  primaryGradient: `linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%)`,
+  secondaryGradient: `linear-gradient(135deg, ${newBrandColors.lightBlue} 0%, ${newBrandColors.brightGreen} 100%)`,
+  warningColor: newBrandColors.orange,
+  errorColor: newBrandColors.lightRed,
+  successColor: newBrandColors.brightGreen,
 };
 
 export type ThemeType = typeof lightTheme; 

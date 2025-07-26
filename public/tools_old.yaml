@@ -158,55 +158,67 @@ tools:
       targeting: ["technology_specific"]
       timeline: ["long_term_innovation"]
 
-  - name: "Innovation grants for business"
-    tag: "innovation_grants_for_business"
+  - name: "Grants for collaborative R&D"
+    tag: "grants_for_collaborative_rd"
 
     # PURPOSE & APPLICATION
     purpose_and_application: 
-      why: "Help companies grow by developing and commercialising new products, processes, and services within a strong innovation ecosystem. Addresses market failures where private investment in innovation is insufficient due to spillover effects, high risk, or financing constraints, particularly for SMEs and collaborative projects."
-      optimal_conditions: "Most effective when firms face financing gaps or spillover risks at TRL 3-7, and where collaboration between organizations can enhance innovation outcomes. Works particularly well for projects that are too risky for private finance but have clear commercial potential."
+      why: "To de-risk innovation and drive technological progress by supporting R&D collaboration between businesses and academia. The grants help academics address real-world challenges while enabling businesses to access new skills, data, and equipment. The overall goal is to drive UK comparative advantage, growth, and security."
+      optimal_conditions: "This is a versatile tool effective across all Technology Readiness Levels (TRLs), from use-inspired basic research through to adoption and commercialisation. It is often targeted at specific sectors or technologies, and almost always requires co-investment from the lead business partner."
 
     # HOW IT WORKS
-    how_it_works: "Businesses apply to competitive Innovate UK funding calls, with grants typically covering 50% of eligible costs for large firms and up to 67% for SMEs. Support is delivered through various mechanisms including collaborative R&D projects involving multiple organizations, Smart grants for individual company innovation projects, and feasibility studies for early-stage concepts. The competitive process involves expert assessment of both technical merit and commercial potential."
+    how_it_works: "Public funding is provided through grants that mandate collaboration between multiple parties, typically businesses and academic institutions, as a condition of the award. The level of targeting can vary, from broad sectors to specific technologies and technical challenges. Co-investment from the lead business, usually in the form of match-funding, is a near-universal requirement. Programmes range from small-scale projects for knowledge exchange to multi-year, multi-million pound initiatives aimed at solving major challenges."
 
     # TARGETABILITY
     targetability:
-      sectoral: "**High** – competitions can be designed as thematic calls focusing on specific sectors or as open calls across all areas"
-      technological: "**High** – funding calls can define specific focus areas and emerging technology priorities"
-      regional: "**Moderate** – Launchpads and Innovation Accelerators provide mechanisms for place-based targeting"
-      by_firm_type: "**High** – SME support rates are higher than for large companies, and collaboration rules can steer consortium formation"
-      overall_assessment: "**Versatile grant platform** with strong targeting options across multiple dimensions."
+      sectoral: "**High** – Can be targeted to specific sectors."
+      technological: "**High** – Can be targeted to specific technologies and technical challenges."
+      regional: "**Moderate** – Could be targeted by region."
+      by_firm_type: "**High** – Can be targeted by firm size, with greater impacts noted for smaller firms."
+      overall_assessment: "**Powerful targeted tool for de-risking innovation** – Fosters diversity in R&D, with most grants aimed at driving UK strategic advantages."
 
     # EFFECTIVENESS
     effectiveness:
-      what_works: "Evidence shows high additionality and significant GVA impact, with support backed by three rigorous counterfactual studies. Achieves leverage of approximately 0.67:1, meaning every pound of public funding generates additional private investment. Competitive process helps identify the most promising projects and encourages high standards. Between 2004-2019, supported at least 14,681 businesses with over £2.5 billion in grants, serving as a central pillar of UK innovation policy with strong adaptability to changing priorities including net zero transition and regional growth objectives."
-      what_doesnt: "Significant oversubscription creates frustration among applicants and may deter future applications. Success rates vary considerably between competitions, and administrative burden can be substantial for smaller companies despite efforts to streamline processes."
-      additionality: "**High evidence** - Rigorous evaluation shows employment increases of 23-27% and turnover growth of 28-14% over six years for supported companies compared to matched control groups."
-      timeline: "Turnover and employment effects typically emerge within 1-2 years of grant completion, while productivity improvements generally take 3-5 years to materialise."
+      what_works: "Evidence supports a positive link between collaborative R&D support, innovation, and firm growth. In the UK, these grants yield higher returns than other types in the Innovate UK portfolio. The requirement for match-funding often results in significant private sector leverage; for instance, the Industrial Strategy Challenge Fund's £2.82bn investment secured £4.65bn in match funding, which is expected to grow to £8.19bn. Impacts are greatest for SMEs and firms in high-tech manufacturing and knowledge-intensive sectors."
+      what_doesnt: "Tensions over intellectual property can slow or derail projects if not addressed early. Funding scarcity can lead to the formation of 'tokenistic' collaborations. Large, complex programmes carry a significant administrative burden, and grant application timelines can be misaligned with the faster pace of industry."
+      additionality: "**Medium-High evidence** - Multiple studies show genuine additionality, although the specific findings can vary based on the grant type, sector, technology, company type, and geography."
+      timeline: "Variable, depending on the TRL stage the grant is targeting."
 
     # RECOMMENDATIONS
     recommendations:
-      - "Maintain the current mix of thematic and open funding calls to balance strategic priorities with bottom-up innovation."
-      - "Scale up Launchpads and regional programs to better address place-based innovation objectives."
-      - "Streamline administrative processes for smaller grants while maintaining rigorous assessment for larger awards."
-      - "Consider expanding eligibility criteria or funding rates for strategic priority areas."
+      - "Continue to foster a diverse range of collaborative R&D grant types, with a majority targeted at sectors and technologies that drive UK comparative advantage, growth, and security."
+      - "Ensure administration is handled by expert leaders with sufficient autonomy, citing the Aerospace Technology Institute as an exemplar."
+      - "Create stronger connections with policymakers to highlight industry challenges, which could accelerate market readiness and adoption of innovations."
+      - "Encourage Innovate UK to act swiftly to fill the strategic gap in responsive, non-targeted collaborative grants left by the termination of its Smart Grants programme."
 
     # IMPLEMENTATION
     implementation:
-      lead_body: "Innovate UK"
-      ease: "**Medium complexity** – managed by specialist agency with established processes, but requires significant expert assessment capacity and ongoing project monitoring"
-      flexibility: "**High** – new calls can be opened or existing programs paused quickly in response to changing priorities"
+      lead_body: "Expert bodies (e.g., Innovate UK, Aerospace Technology Institute)"
+      ease: "**Medium Complexity** – Varies depending on the specificity of the funding target and the number of partners involved."
+      flexibility: "**High Flexibility** – The tool can be designed to achieve a wide variety of different outcomes."
 
     # REFERENCE
-    further_reading: []
+    further_reading:
+      - title: "Assessing the business performance effects of receiving publicly-funded science, research and innovation grants"
+        source: "Vanino et al, ERC, 2017"
+        url: "https://www.enterpriseresearch.ac.uk/wp-content/uploads/2017/10/ERC-ResPap61-VaninoRoperBecker-revised-V3.3.pdf"
+      - title: "Innovate UK Grants and R&D Returns: Impact on Business and Economy"
+        source: "Dinos & Vorley, Innovation Caucus, 2023"
+        url: "https://innovationcaucus.co.uk/app/uploads/2023/11/Innovate-UK-Grants-and-RD-Returns-Impact-on-Business-and-Economy_FINAL.pdf"
+      - title: "The Contribution of Innovate UK to UK Firm Growth and Performance: 1. An Analysis of Innovate UK Applicants for Funding"
+        source: "Cowling et al, Innovation and Research Caucus, 2025"
+        url: "https://innovation-research-caucus-uploads.s3.amazonaws.com/production/uploads/2025/01/The-Contribution-of-IUK-to-UK-Firm-Growth-and-Performance.report-Jan-2025-FINAL-v4.pdf"
+      - title: "Interim Impact Evaluation of the Industrial Strategy Challenge Fund"
+        source: "Zakaria et al, Rand 2024"
+        url: "https://www.ukri.org/wp-content/uploads/2024/09/IUK-270924-ISCF-interim-impact-report_FINAL.pdf"
 
     # TAGS
     tags:
-      objectives: ["increase_business_rd_investment", "support_sme_innovation", "support_applied_rd_commercialisation"]
-      innovation_stage: ["early_stage", "applied_research", "development", "demonstration"]
-      sectors: ["cross_sector"]
-      delivery_mechanism: ["direct_grant", "collaborative_grant"]
-      targeting: ["technology_specific", "regional", "business_focused"]
+      objectives: ["support_collaborative_rd", "increase_business_rd_investment", "support_growth_driving_sectors", "support_sme_innovation"]
+      innovation_stage: ["early_stage", "applied_research", "development", "demonstration", "deployment"]
+      sectors: ["manufacturing", "cross_sector"]
+      delivery_mechanism: ["collaborative_grant"]
+      targeting: ["sector_specific", "technology_specific", "regional", "firm_size", "business_focused", "academic_focused"]
       timeline: ["short_term_outcomes", "long_term_innovation"]
 
   - name: "Contracts for innovation"
@@ -323,3 +335,133 @@ tools:
       delivery_mechanism: ["visa_scheme", "talent_attraction"]
       targeting: ["skills_based", "merit_based", "business_focused"]
       timeline: ["immediate_impact", "long_term_innovation"]
+
+  - name: "Regulatory sandboxes"
+    tag: "regulatory_sandboxes"
+
+    # PURPOSE & APPLICATION
+    purpose_and_application: 
+      why: "Supports regulatory innovation and reduces regulatory costs for innovative firms. Regulators create sandboxes to pilot new products, services, or business models with live customers for a set period. The lessons learned are used to refine permanent rules and future market approvals."
+      optimal_conditions: "Most effective in tightly regulated sectors with significant regulatory uncertainty. Works best when the regulator has enough capacity, operates transparently, and intends to share the benefits with firms not participating in the sandbox. The tool is particularly useful around Technology Readiness Level (TRL) 7, where regulatory hurdles can impede development."
+
+    # HOW IT WORKS
+    how_it_works: "Sector regulators invite groups of innovators into a sandbox to test new offerings with real customers for a limited time. Each participating firm operates with bespoke regulatory relief, such as tailored waivers or modified license conditions, which are agreed upon beforehand. The process includes predefined entry criteria, consumer-protection safeguards, and data-sharing obligations, all enforced through close supervision. At the end of the trial, firms must either transition to the full regulatory regime or exit the market."
+
+    # TARGETABILITY
+    targetability:
+      sectoral: "**High** – Can be targeted by sector, with UK examples in aviation, fintech, and energy."
+      technological: "**High** – Can target specific technologies; existing UK sandboxes focus on areas like cell-cultured meat and 'AI as a medical device'."
+      regional: "**Low** – Sandboxes are typically run by national regulators, making it difficult to direct innovation to specific geographic areas."
+      by_firm_type: "**High** – Regulators can prioritize access for start-ups and SMEs, which may struggle more with regulatory costs."
+      overall_assessment: "**Flexible tool** – Supports regulatory innovation and lowers regulatory costs for innovative companies."
+
+    # EFFECTIVENESS
+    effectiveness:
+      what_works: "Effectiveness is improved by involving regulators directly, transparently reporting on progress to benefit non-participating firms, and not pre-specifying the regulatory exemptions. Using clear, objective access criteria and clarifying that entry is not a regulatory endorsement helps prevent unfair market advantages."
+      what_doesnt: "Poor transparency can create disadvantages for firms outside the sandbox. The tool is vulnerable to regulatory capture by participating companies and high operational costs can divert resources from other regulatory functions."
+      additionality: "**Low-Medium evidence** – Evidence is limited, but one UK study found that entry into a fintech sandbox increased a firm's capital raised by 15%, its probability of raising capital by 50%, and its chances of a patent grant by 1.9%, while lowering the probability of business failure by 14.2% compared to similar non-participating firms."
+      timeline: "Impacts can be seen relatively quickly; evidence from a UK fintech sandbox shows positive effects on capital raising within one quarter and on patenting within two years."
+
+    # RECOMMENDATIONS
+    recommendations:
+      - "Use in tightly regulated sectors around TRL 7, where regulatory uncertainty is a significant barrier to further development."
+      - "Improve effectiveness by actively sharing learnings across the regulator and relevant industries, including with firms that do not participate in the sandbox."
+      - "Achieve broader diffusion of knowledge by having regulators transparently report their findings."
+
+    # IMPLEMENTATION
+    implementation:
+      lead_body: "Sector regulators (e.g., for FinTech, energy, aviation)"
+      ease: "**High complexity** – Requires specialist expertise to design transparent eligibility rules and appropriate consumer safeguards."
+      flexibility: "**High** – The size of cohorts, duration of the sandbox, and conditions of regulatory relief can be adjusted between rounds, and lessons can be quickly integrated into wider rule changes."
+
+    # REFERENCE
+    further_reading:
+      - title: "Regulatory Sandboxes and Fintech Funding: Evidence from the UK"
+        source: "SSRN"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3727816"
+      - title: "The Sandbox Paradox: Balancing the Need to Facilitate Innovation with the Risk of Regulatory Privilege"
+        source: "SSRN"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561860"
+      - title: "Regulatory sandboxes: Do they speed up innovation in energy?"
+        source: "ScienceDirect"
+        url: "https://www.sciencedirect.com/science/article/pii/S0301421523002410"
+      - title: "Regulatory Sandboxes in Artificial Intelligence"
+        source: "OECD"
+        url: "https://www.oecd.org/en/publications/regulatory-sandboxes-in-artificial-intelligence_8f80a0e6-en.html"
+        
+    # TAGS
+    tags:
+      objectives: ["support_adoption_new_technologies", "support_sme_innovation", "create_markets_for_innovation"]
+      innovation_stage: ["demonstration"]
+      sectors: ["cross_sector", "energy", "aerospace", "fintech"]
+      delivery_mechanism: ["regulatory_sandbox"]
+      targeting: ["sector_specific", "technology_specific", "firm_size"]
+      timeline: ["short_term_outcomes"]
+
+  - name: "Innovation Loans"
+    tag: "innovation_loans"
+
+    # PURPOSE & APPLICATION
+    purpose_and_application: 
+      why: "To support firms, particularly innovative SMEs, in overcoming financing gaps for late-stage R&D and bringing prototypes to market."
+      optimal_conditions: "Most effective for supporting small and medium-sized enterprises (SMEs) and manufacturing firms. They are best suited for technologies at a late stage of development, around TRL 6-8, to address funding gaps for scaling, regulatory validation, and market entry."
+
+    # HOW IT WORKS
+    how_it_works: "Public bodies, such as Innovate UK, provide below-market rate loans to businesses to support R&D activities. These programs typically focus on innovative SMEs undertaking late-stage projects. Applicants undergo a competitive assessment based on the quality of their innovation and its commercial potential."
+
+    # TARGETABILITY
+    targetability:
+      sectoral: "**High** – Loans can be restricted to specific sectors, with evidence suggesting greater benefits for manufacturing firms."
+      technological: "**High** – Can be targeted to late-stage technologies (TRL 6-8) where the benefits are likely greatest."
+      regional: "**High** – It is possible to restrict innovation loans to firms within specific geographic regions."
+      by_firm_type: "**High** – Loans can be limited to SMEs, for which the benefits are larger."
+      overall_assessment: "**Targeted tool** – Supports firms to bring prototypes to market and works best for SMEs, manufacturing, and late-stage innovation."
+
+    # EFFECTIVENESS
+    effectiveness:
+      what_works: "Supporting SMEs with loans is more likely to crowd-in private R&D investment compared to supporting large firms. Focusing on manufacturing businesses also helps attract more private R&D funding. A rigorous technical assessment process helps direct funds to commercially promising innovations. Furthermore, combining loans with grants can complement each other for SMEs, encouraging additional private investment."
+      what_doesnt: "Loan terms can create a 'moral hazard' if repayment is linked to revenue instead of profit, or if forgiveness terms are too permissive, as this may disincentivize firms from pursuing commercialization."
+      additionality: "**Low evidence** – Evidence is limited, but a study of Spanish firms indicated that receiving an innovation loan made a firm 24.9% more likely to invest its own resources in R&D. While state-backed loans might have a signaling effect that helps secure private follow-on funding, it is not clear if this generates new investment or simply reallocates existing capital."
+      timeline: "The crowding-in effects on private R&D investment can happen within the first year of the loan being issued."
+
+    # RECOMMENDATIONS
+    recommendations:
+      - "Use innovation loans to support SMEs and manufacturing firms with technologies around TRL 6-8 to bridge finance gaps for scaling and market entry."
+      - "Improve effectiveness by avoiding loan repayment terms linked to turnover and by not having overly permissive forgiveness clauses."
+      - "Consider offering grants in conjunction with loans for SMEs to maximize the crowding-in of additional private R&D investment."
+
+    # IMPLEMENTATION
+    implementation:
+      lead_body: "Public bodies (e.g., Innovate UK)"
+      ease: "**High Complexity** – Requires capabilities for credit assessment, technical due diligence, and portfolio risk management."
+      flexibility: "**Low Flexibility** – Loan agreements span multiple years, which restricts the ability to quickly reallocate funding to other priorities."
+
+    # REFERENCE
+    further_reading:
+      - title: "Evaluation of innovation loans: follow-on interim report"
+        source: "UKRI"
+        url: "https://www.ukri.org/publications/evaluation-of-innovation-loans-follow-on-interim-report/"
+      - title: "Are R&D Loans Relevant for Supporting Industrial R&D: The Case of TTGV in Turkey"
+        source: "Dergipark"
+        url: "https://dergipark.org.tr/tr/download/article-file/2175942"
+      - title: "Publicly-Funded R&D Programs and Survival of Patents"
+        source: "SSRN"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1762027"
+      - title: "Commercialization of Patents and External Financing During the R&D-Phase"
+        source: "SSRN"
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1017781"
+      - title: "Impact of low-interest credits on business RD expenditures: Spanish firms and CDTI loans for RD projects"
+        source: "MPRA"
+        url: "https://mpra.ub.uni-muenchen.de/44221/2/MPRA_paper_44221.pdf"
+      - title: "Subsidies or loans? Evaluating the impact of R&D support programmes"
+        source: "ScienceDirect"
+        url: "https://www.sciencedirect.com/science/article/abs/pii/S0048733317300811"
+        
+    # TAGS
+    tags:
+      objectives: ["support_sme_innovation", "support_applied_rd_commercialisation", "increase_business_rd_investment"]
+      innovation_stage: ["development", "demonstration"]
+      sectors: ["manufacturing", "cross_sector"]
+      delivery_mechanism: ["innovation_loan"]
+      targeting: ["sector_specific", "technology_specific", "regional", "firm_size", "business_focused"]
+      timeline: ["short_term_outcomes"]
