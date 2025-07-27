@@ -65,11 +65,7 @@ const TabContent = styled.div`
   padding: 2rem;
 `;
 
-interface CalculatorPageProps {
-  onBack: () => void;
-}
-
-export const CalculatorPage: React.FC<CalculatorPageProps> = ({ onBack }) => {
+export const CalculatorPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('private');
   
   // Private R&D state

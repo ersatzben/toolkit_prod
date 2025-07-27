@@ -15,10 +15,6 @@ function App() {
     navigate('/');
   };
 
-  const handleShowUserGuide = () => {
-    navigate('/toolkit#guide');
-  };
-
   const showHeader = location.pathname !== '/';
 
   return (
@@ -33,14 +29,13 @@ function App() {
             "UK R&D Policy Toolkit"
           }
           onBackToSplash={handleBackToSplash}
-          onShowHelp={handleShowUserGuide}
         />
       )}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/toolkit" element={<ToolkitPage />} />
-        <Route path="/calculator" element={<ROICalculator onBack={handleBackToSplash} />} />
-        <Route path="/reading" element={<FurtherReading onBack={handleBackToSplash} />} />
+        <Route path="/calculator" element={<ROICalculator />} />
+        <Route path="/reading" element={<FurtherReading />} />
       </Routes>
     </AppContainer>
   );

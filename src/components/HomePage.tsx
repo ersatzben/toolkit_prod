@@ -89,41 +89,6 @@ const OptionDescription = styled.p`
   opacity: 0.8;
 `;
 
-const DisclaimerText = styled.p`
-  color: ${newBrandColors.beige};
-  opacity: 0.9;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 4rem;
-  max-width: 600px;
-  line-height: 1.6;
-
-  a {
-    color: ${newBrandColors.lightBlue};
-    font-weight: 600;
-  }
-`;
-
-const FooterSection = styled.div`
-  margin-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const LogoImage = styled.img`
-  height: 60px;
-  filter: brightness(0) invert(1);
-`;
-
-const FooterText = styled.p`
-  color: ${newBrandColors.beige};
-  opacity: 0.8;
-  text-align: center;
-  font-size: 0.9rem;
-`;
-
 export const HomePage: React.FC = () => {
   return (
     <PageContainer>

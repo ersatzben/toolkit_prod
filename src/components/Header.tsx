@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   StickyHeader,
   HeaderSection,
@@ -12,10 +11,9 @@ import {
 interface HeaderProps {
   title: string;
   onBackToSplash: () => void;
-  onShowHelp: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, onBackToSplash, onShowHelp }) => {
+export const Header: React.FC<HeaderProps> = ({ title, onBackToSplash }) => {
   return (
     <StickyHeader>
       <HeaderSection>

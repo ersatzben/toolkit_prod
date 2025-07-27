@@ -56,11 +56,7 @@ const NavLink = styled.a`
   }
 `;
 
-interface FurtherReadingPageProps {
-  onBack: () => void;
-}
-
-export const FurtherReadingPage: React.FC<FurtherReadingPageProps> = ({ onBack }) => {
+export const FurtherReadingPage: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
