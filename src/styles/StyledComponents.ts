@@ -40,23 +40,22 @@ export const ContentRow = styled.div`
 `;
 
 export const StickyHeader = styled.header`
-  background: linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
   color: ${brandColors.beige};
-  padding: 0 25px;
   height: ${headerHeight};
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; // Use flexbox to layout children
+  align-items: stretch; // Stretch children to fill height
   position: sticky;
   top: 0;
   z-index: 1000; // Ensure header stays on top
   width: 100%;
   box-sizing: border-box;
+  padding: 0; // Remove padding from the main container
 `;
 
 export const HeaderLogo = styled.img`
   height: 70px; // Changed from 40px to fill header
   margin-right: 15px;
+  display: block; // Add display: block to remove extra space under the image
 `;
 
 export const HeaderTitle = styled.h1`
@@ -64,15 +63,14 @@ export const HeaderTitle = styled.h1`
   font-weight: 600;
   color: ${brandColors.beige};
   margin: 0;
-  position: absolute; // Centering trick
-  left: 50%;
-  transform: translateX(-50%);
+  // Remove absolute positioning to work within the new flex layout
 `;
 
 export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   gap: 25px;
+  margin-left: auto; // Push nav to the right
 `;
 
 export const HeaderNavLink = styled.a`
@@ -88,9 +86,22 @@ export const HeaderNavLink = styled.a`
   }
 `;
 
-export const HeaderSection = styled.div`
+// Was HeaderSection, now repurposed for the logo
+export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  background-color: ${newBrandColors.darkGreen}; // Solid color for the logo area
+  padding: 0 25px; // Keep padding here
+`;
+
+// New component for the gradient part of the header
+export const HeaderGradient = styled.div`
+  flex-grow: 1; // Takes up the remaining space
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
+  padding: 0 25px;
 `;
 
 export const Sidebar = styled.nav`
@@ -333,12 +344,13 @@ export const TargetabilityBox = styled.div`
   }
 `;
 
-export const MarkdownText = styled.div`
+export const MarkdownText = styled.div<{ variant?: 'large' }>`
   p {
     margin-bottom: 1.2em;
-    line-height: 1.7;
+    line-height: ${props => props.variant === 'large' ? '1.8' : '1.7'};
     color: ${newBrandColors.charcoal};
     opacity: 0.9;
+    font-size: ${props => props.variant === 'large' ? '1.1rem' : '1rem'};
     
     &:last-child {
       margin-bottom: 0;

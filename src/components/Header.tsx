@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   StickyHeader,
-  HeaderSection,
+  LogoContainer,
+  HeaderGradient,
   HeaderLogo,
   HeaderTitle,
   HeaderNav,
@@ -16,17 +17,18 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ title, onBackToSplash }) => {
   return (
     <StickyHeader>
-      <HeaderSection>
+      <LogoContainer>
         <a href="https://britishprogress.org" target="_blank" rel="noopener noreferrer">
           <HeaderLogo src="/logo.png" alt="Centre for British Progress Logo" />
         </a>
+      </LogoContainer>
+      <HeaderGradient>
         <HeaderTitle>{title}</HeaderTitle>
-      </HeaderSection>
-      <HeaderNav>
-        <HeaderNavLink href="#" onClick={onBackToSplash}>← Back to Home</HeaderNavLink>
-        
-        <HeaderNavLink href="#">Contact</HeaderNavLink>
-      </HeaderNav>
+        <HeaderNav>
+          <HeaderNavLink href="#" onClick={onBackToSplash}>← Back to Home</HeaderNavLink>
+          <HeaderNavLink href="#">Contact</HeaderNavLink>
+        </HeaderNav>
+      </HeaderGradient>
     </StickyHeader>
   );
 }; 

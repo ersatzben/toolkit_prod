@@ -68,7 +68,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
       {tool.overall_assessment && (
         <Section>
           <SectionTitle itemType="tool">Overall Assessment</SectionTitle>
-          <MarkdownText>
+          <MarkdownText variant="large">
             <SafeMarkdown value={tool.overall_assessment} />
           </MarkdownText>
         </Section>
@@ -204,7 +204,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
       {/* CBP View */}
       {tool.cbp_view_recommendations_for_uk && (
         <Section>
-          <SectionTitle itemType="tool">Recommendations for the UK (CBP view)</SectionTitle>
+          <SectionTitle itemType="tool">Recommendations for the UK (Centre for British Progress view)</SectionTitle>
           <MarkdownText>
             <SafeMarkdown value={tool.cbp_view_recommendations_for_uk} />
           </MarkdownText>

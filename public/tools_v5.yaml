@@ -532,14 +532,13 @@ tools:
       timeline:
         - long_term_innovation
 
-
   - name: "Contracts for Innovation"
     id: "contracts_for_innovation"
     overall_assessment: >
       This is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts.
     how_it_works:
       description: >
-        [cite_start]Public sector organisations pose a problem statement and companies compete for contracts to develop R&D solutions, with the government acting as a lead customer[cite: 5]. [cite_start]Contracts are typically phased, moving from feasibility to prototype development and finally to operational testing and procurement[cite: 5]. [cite_start]It is primarily a pre-commercial procurement tool, as most competitions are at the feasibility phase[cite: 5]. [cite_start]Innovate UK administers the competitions, with defence, health, and the devolved administrations being the greatest users of the tool[cite: 5].
+        Public sector organisations pose a problem statement and companies compete for contracts to develop R&D solutions, with the government acting as a lead customer. Contracts are typically phased, moving from feasibility to prototype development and finally to operational testing and procurement. It is primarily a pre-commercial procurement tool, as most competitions are at the feasibility phase. Innovate UK administers the competitions, with defence, health, and the devolved administrations being the greatest users of the tool.
       mechanism: >
         A phased, competitive contract model for pre-commercial procurement where the government acts as a lead customer for R&D solutions to its own defined problems.
       complexity: "High"
@@ -576,7 +575,7 @@ tools:
         level: "Low"
         details: "Any size firm can apply."
     cbp_view_recommendations_for_uk: >
-      [cite_start]Contracts for Innovation is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts[cite: 5]. [cite_start]To maximise its potential, its use needs to be scaled within public sector organisations, requiring promotion, best practice sharing, and potentially targets for use[cite: 5]. [cite_start]Additionally, for appropriate innovative solutions, there should be a clearly supported pathway to commercialisation and public procurement[cite: 5].
+      Contracts for Innovation is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts. To maximise its potential, its use needs to be scaled within public sector organisations, requiring promotion, best practice sharing, and potentially targets for use. Additionally, for appropriate innovative solutions, there should be a clearly supported pathway to commercialisation and public procurement.
     further_reading:
       - title: "An Evaluation of the Small Business Research Initiative (SBRI) Report"
         author: "Steer economic development, 2022"
