@@ -10,7 +10,7 @@ export const TopBanner: React.FC = () => {
         We welcome feedback at <a href="mailto:contact@britishprogress.org">contact@britishprogress.org</a>
       </TopBannerText>
       <TopBannerText>
-        Content by Helen Ewles, Sanjush Dalmia and Ben Johnson for <a href="https://britishprogress.org" target="_blank" rel="noopener noreferrer">Centre for British Progress</a>
+        Content by Helen Ewles, Sanjush Dalmia, Pedro Serôdio and Ben Johnson for <a href="https://britishprogress.org" target="_blank" rel="noopener noreferrer">Centre for British Progress</a>
       </TopBannerText>
     </TopBannerContainer>
   );
