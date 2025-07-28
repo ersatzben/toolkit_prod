@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { parse } from 'yaml';
-import { useLocation, useNavigate } from 'react-router-dom';
-import type { Tool, TagsList, Objective, SelectedItem, ItemType } from '../types/Tool';
+import { useParams, useNavigate, useLocation, Routes, Route } from 'react-router-dom';
+import type { Tool, TagsList, Objective } from '../types/Tool';
 import { ToolDetail } from './ToolDetail';
-import { ObjectiveDetail } from './ObjectiveDetail';
 import {
   ContentRow,
   Sidebar,
@@ -21,43 +20,84 @@ import {
   PageTitle,
   Section,
   MarkdownText,
-  SidebarSubheading
 } from '../styles/StyledComponents';
+import { Page } from './Page';
 
 interface ObjectiveGroup {
   group: string;
   objectives: Objective[];
 }
 
+// Main content components for different routes
+const SplashMessage = () => (
+  <Section style={{ textAlign: 'center', marginTop: '40px' }}>
+      <p style={{ fontSize: '1.2rem', color: '#6c757d' }}>
+        ◀  Choose a tool from the left to learn more…
+      </p>
+  </Section>
+);
+
+const UserGuide: React.FC<{ guideHtml: string }> = ({ guideHtml }) => (
+  <Section>
+    <PageTitle>How to use this toolkit</PageTitle>
+    <MarkdownText dangerouslySetInnerHTML={{ __html: guideHtml }} />
+  </Section>
+);
+
+const ToolView: React.FC<{
+  tools: Tool[];
+  allObjectives: Objective[];
+  tagsList: TagsList | null;
+  onSelectObjective: (objective: Objective) => void;
+  onAddFilter: (tag: string) => void;
+}> = ({ tools, allObjectives, tagsList, onSelectObjective, onAddFilter }) => {
+  const { tag } = useParams<{ tag: string }>();
+  const tool = tools.find(t => t.tag === tag);
+  
+  if (!tool || !tagsList) {
+    return <div>Tool not found</div>;
+  }
+  
+  return (
+    <ToolDetail 
+      tool={tool} 
+      onSelectObjective={onSelectObjective} 
+      tagsList={tagsList}
+      objectives={allObjectives}
+      onAddFilter={onAddFilter}
+    />
+  );
+};
+
+
 export const ToolkitPage: React.FC = () => {
   const [tools, setTools] = useState<Tool[]>([]);
   const [objectiveGroups, setObjectiveGroups] = useState<ObjectiveGroup[]>([]);
   const [allObjectives, setAllObjectives] = useState<Objective[]>([]);
-  const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
-  const [selectedItemType, setSelectedItemType] = useState<ItemType>(null);
   const [tagsList, setTagsList] = useState<TagsList | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const [showUserGuide, setShowUserGuide] = useState(false);
   const [guideHtml, setGuideHtml] = useState<string>('');
   const [collapsedSections, setCollapsedSections] = useState<{ tools: boolean }>({ tools: false });
   const mainContentRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [toolsResponse, tagsResponse, objectivesGroupedResponse] = await Promise.all([
+        const [toolsResponse, tagsResponse, objectivesGroupedResponse, guideResponse] = await Promise.all([
           fetch('/tools_v5.yaml'),
           fetch('/tags_list.yaml'),
           fetch('/objectives_grouped.yaml'),
+          fetch('/guide.html'),
         ]);
         
-        const [toolsYaml, tagsYaml, objectivesGroupedYaml] = await Promise.all([
+        const [toolsYaml, tagsYaml, objectivesGroupedYaml, guideText] = await Promise.all([
           toolsResponse.text(),
           tagsResponse.text(),
           objectivesGroupedResponse.text(),
+          guideResponse.text(),
         ]);
 
         const toolsData = parse(toolsYaml);
@@ -79,53 +119,15 @@ export const ToolkitPage: React.FC = () => {
         setTools(toolsWithTag);
         setTagsList(tagsData);
         setObjectiveGroups(objectivesGroupedData.objective_groups);
+        setGuideHtml(guideText);
 
         const currentAllObjectives = objectivesGroupedData.objective_groups.reduce((acc: Objective[], group: ObjectiveGroup) => {
           return acc.concat(group.objectives);
         }, []);
         setAllObjectives(currentAllObjectives);
 
-        const hash = location.hash.substring(1);
-        if (hash) {
-          if (hash === 'guide') {
-            setShowUserGuide(true);
-            setSelectedItem(null);
-            setSelectedItemType(null);
-            const guideResponse = await fetch('/guide.html');
-            const guideText = await guideResponse.text();
-            setGuideHtml(guideText);
-            return;
-          }
-          
-          const [type, tag] = hash.split(':');
-          if (type === 'tool' && toolsWithTag) {
-            const toolFromHash = toolsWithTag.find((t: Tool) => t.tag === tag);
-            if (toolFromHash) {
-              setSelectedItem(toolFromHash);
-              setSelectedItemType('tool');
-              setShowUserGuide(false);
-              return;
-            }
-          } else if (type === 'objective' && currentAllObjectives) {
-            const objectiveFromHash = currentAllObjectives.find((o: Objective) => o.tag === tag);
-            if (objectiveFromHash) {
-              setSelectedItem(objectiveFromHash);
-              setSelectedItemType('objective');
-              setShowUserGuide(false);
-              return;
-            }
-          }
-        }
-        
-        if (toolsWithTag.length === 0 && currentAllObjectives.length === 0) {
-          setShowUserGuide(true);
-          const guideResponse = await fetch('/guide.html');
-          const guideText = await guideResponse.text();
-          setGuideHtml(guideText);
-        }
       } catch (error) {
         console.error('Error loading data:', error);
-        setShowUserGuide(true);
         try {
             const guideResponse = await fetch('/guide.html');
             const guideText = await guideResponse.text();
@@ -138,18 +140,11 @@ export const ToolkitPage: React.FC = () => {
     };
 
     loadData();
-  }, [location.hash]);
-
-  useEffect(() => {
-    if (mainContentRef.current) {
-      mainContentRef.current.scrollTo(0, 0);
-    }
-  }, [selectedItem, selectedItemType, showUserGuide]);
+  }, []);
 
   const addFilter = (tag: string) => {
     if (!activeFilters.includes(tag)) {
       setActiveFilters([...activeFilters, tag]);
-      setShowUserGuide(false);
     }
   };
 
@@ -179,33 +174,20 @@ export const ToolkitPage: React.FC = () => {
     );
 
   const handleSelectTool = (tool: Tool) => {
-    setSelectedItem(tool);
-    setSelectedItemType('tool');
-    setShowUserGuide(false);
-    navigate(`#tool:${tool.tag}`);
+    navigate(`/toolkit/tool/${tool.tag}`);
     setCollapsedSections(prev => ({ ...prev, tools: false }));
   };
 
   const handleSelectObjective = (objective: Objective) => {
-    setSelectedItem(objective);
-    setSelectedItemType('objective');
-    setShowUserGuide(false);
-    navigate(`#objective:${objective.tag}`);
+    navigate(`/toolkit/objective/${objective.tag}`);
   };
 
   const toggleSidebarSection = (section: 'tools') => {
     setCollapsedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
-  const SplashMessage = () => (
-    <Section style={{ textAlign: 'center', marginTop: '40px' }}>
-        <p style={{ fontSize: '1.2rem', color: '#6c757d' }}>
-          ◀  Choose a tool from the left to learn more…
-        </p>
-    </Section>
-  );
-
   return (
+    <Page title="UK R&D Policy Toolkit – Learn about R&D Policy Tools">
     <ContentRow>
       <Sidebar>
         <FilterBarContainer>
@@ -246,7 +228,7 @@ export const ToolkitPage: React.FC = () => {
               {filteredTools.map((tool) => (
                 <ToolListItem
                   key={tool.tag}
-                  active={!showUserGuide && selectedItemType === 'tool' && selectedItem?.tag === tool.tag}
+                  active={location.pathname === `/toolkit/tool/${tool.tag}`}
                   onClick={() => handleSelectTool(tool)}
                 >
                   {tool.name}
@@ -257,26 +239,24 @@ export const ToolkitPage: React.FC = () => {
         </SidebarSection>
       </Sidebar>
       <MainContent ref={mainContentRef}>
-        {showUserGuide && guideHtml && (
-          <Section>
-            <PageTitle>How to use this toolkit</PageTitle>
-            <MarkdownText dangerouslySetInnerHTML={{ __html: guideHtml }} />
-          </Section>
-        )}
-        {!showUserGuide && !selectedItem && <SplashMessage />}
-        {!showUserGuide && selectedItem && selectedItemType === 'tool' && tagsList && (
-          <ToolDetail 
-            tool={selectedItem as Tool} 
-            onSelectObjective={handleSelectObjective} 
-            tagsList={tagsList}
-            objectives={allObjectives}
-            onAddFilter={addFilter}
+        <Routes>
+          <Route path="/" element={<SplashMessage />} />
+          <Route path="/guide" element={<UserGuide guideHtml={guideHtml} />} />
+          <Route 
+            path="/tool/:tag" 
+            element={
+              <ToolView 
+                tools={tools}
+                allObjectives={allObjectives}
+                tagsList={tagsList}
+                onSelectObjective={handleSelectObjective}
+                onAddFilter={addFilter}
+              />
+            } 
           />
-        )}
-        {!showUserGuide && selectedItem && selectedItemType === 'objective' && (
-          <ObjectiveDetail objective={selectedItem as Objective} tools={tools} onSelectTool={handleSelectTool}/>
-        )}
+        </Routes>
       </MainContent>
     </ContentRow>
+    </Page>
   );
 }; 

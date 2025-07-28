@@ -11,10 +11,9 @@ import {
 
 interface HeaderProps {
   title: string;
-  onBackToSplash: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, onBackToSplash }) => {
+export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <StickyHeader>
       <LogoContainer>
@@ -25,8 +24,8 @@ export const Header: React.FC<HeaderProps> = ({ title, onBackToSplash }) => {
       <HeaderGradient>
         <HeaderTitle>{title}</HeaderTitle>
         <HeaderNav>
-          <HeaderNavLink href="#" onClick={onBackToSplash}>← Back to Home</HeaderNavLink>
-          <HeaderNavLink href="#">Contact</HeaderNavLink>
+          <HeaderNavLink href="/">← Back to Home</HeaderNavLink>
+          <HeaderNavLink href="/contact">Contact</HeaderNavLink>
         </HeaderNav>
       </HeaderGradient>
     </StickyHeader>

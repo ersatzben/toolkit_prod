@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { newBrandColors } from '../styles/theme';
+import { Page } from './Page';
 
 const PageContainer = styled.div`
   display: flex;
@@ -91,46 +92,44 @@ const OptionDescription = styled.p`
 
 export const HomePage: React.FC = () => {
   return (
-    <PageContainer>
-      <WelcomeSection>
-        <MainTitle>UK R&D Policy Toolkit</MainTitle>
-        <Subtitle>
-          Explore comprehensive resources for research and development policy, 
-          from practical tools to investment analysis and evidence-based insights.
-        </Subtitle>
-      </WelcomeSection>
-      
-      <OptionsContainer>
-        <OptionCard to="/toolkit">
-          <OptionIcon>🔧</OptionIcon>
-          <OptionTitle>Learn about R&D policy tools</OptionTitle>
-          <OptionDescription>
-            <strong>For policymakers:</strong> Discover and explore various policy instruments designed to support 
-            R&D initiatives across different sectors and stages.
-          </OptionDescription>
-        </OptionCard>
+    <Page>
+      <PageContainer>
+        <WelcomeSection>
+          <MainTitle>UK R&D Policy Toolkit</MainTitle>
+          <Subtitle>
+            Explore comprehensive resources for research and development policy, 
+            from practical tools to investment analysis and evidence-based insights.
+          </Subtitle>
+        </WelcomeSection>
         
-        <OptionCard to="/reading">
-          <OptionIcon>📚</OptionIcon>
-          <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
-          <OptionDescription>
-            <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
-          </OptionDescription>
-        </OptionCard>
+        <OptionsContainer>
+          <OptionCard to="/toolkit">
+            <OptionIcon>🔧</OptionIcon>
+            <OptionTitle>Learn about R&D policy tools</OptionTitle>
+            <OptionDescription>
+              <strong>For policymakers:</strong> Discover and explore various policy instruments designed to support 
+              R&D initiatives across different sectors and stages.
+            </OptionDescription>
+          </OptionCard>
+          
+          <OptionCard to="/reading">
+            <OptionIcon>📚</OptionIcon>
+            <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
+            <OptionDescription>
+              <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
+            </OptionDescription>
+          </OptionCard>
 
-        <OptionCard to="/calculator">
-          <OptionIcon>📊</OptionIcon>
-          <OptionTitle>Calculate return on investment from R&D</OptionTitle>
-          <OptionDescription>
-            <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
-            and impact of R&D investments.
-          </OptionDescription>
-        </OptionCard>
-      </OptionsContainer>
-
-        
-        
-      
-    </PageContainer>
+          <OptionCard to="/calculator">
+            <OptionIcon>📊</OptionIcon>
+            <OptionTitle>Calculate return on investment from R&D</OptionTitle>
+            <OptionDescription>
+              <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
+              and impact of R&D investments.
+            </OptionDescription>
+          </OptionCard>
+        </OptionsContainer>     
+      </PageContainer>
+    </Page>
   );
 }; 

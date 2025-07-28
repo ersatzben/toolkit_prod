@@ -5,6 +5,7 @@ import type { TabType, PrivateRDParams, PublicRDParams, PrivateRDResults, Public
 import { PrivateRDForm } from './PrivateRDForm';
 import { PublicRDForm } from './PublicRDForm';
 import { InfoSection } from './InfoSection';
+import { Page } from '../Page';
 
 const CalculatorContainer = styled.div`
   background: ${newBrandColors.beige};
@@ -177,6 +178,7 @@ export const CalculatorPage: React.FC = () => {
   }, [privateParams, publicParams]);
 
   return (
+    <Page title="UK R&D Policy Toolkit – Calculate Return on Investment">
     <CalculatorContainer>
       <Container>
         <MainCard>
@@ -215,5 +217,6 @@ export const CalculatorPage: React.FC = () => {
         <InfoSection />
       </Container>
     </CalculatorContainer>
+    </Page>
   );
 }; 
