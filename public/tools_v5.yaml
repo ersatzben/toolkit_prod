@@ -1,4 +1,3 @@
-
 tools:
   - name: "R&D Tax Reliefs"
     id: "rd_tax_reliefs"
@@ -376,7 +375,7 @@ tools:
         - "The literature generally supports a positive relationship between public support for collaborative R&D, innovation, and firms’ growth."
         - "In a UK context, collaborative R&D grants yield considerably higher returns than other grant types within Innovate UK's portfolio."
         - "Companies involved in collaborative R&D are more likely to experience growth and a positive impact on innovative activities."
-        - "Due to match-funding requirements, private sector leverage is often significant; the UK’s £2.82 billion investment in the Industrial Strategy Challenge Fund received match funding of £4.65 billion, which is forecast to reach £8.19 billio  n by 2025."
+        - "Due to match-funding requirements, private sector leverage is often significant; the UK’s £2.82 billion investment in the Industrial Strategy Challenge Fund received match funding of £4.65 billion, which is forecast to reach £8.19 billion by 2025."
         - "Impacts are greater for smaller firms and those in high-tech manufacturing and knowledge-intensive sectors."
       what_doesnt_work:
         - "Tensions can arise over intellectual property; if not addressed early, negotiating ownership, licensing terms, and publication rights can be slow, complicated, and sometimes derail projects."
