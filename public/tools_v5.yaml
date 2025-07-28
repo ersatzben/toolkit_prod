@@ -356,7 +356,7 @@ tools:
       timeline:
         - short_term_outcomes
 
-  - name: "Grants for collaborative R&D"
+  - name: "Grants for Collaborative R&D"
     id: "grants_for_collaborative_rd"
     overall_assessment: >
       A powerful targeted tool for de-risking innovation. The UK should continue to foster a diversity of collaborative R&D grant types, with the majority targeted towards sectors and technologies to drive UK comparative advantage and increase growth and security.
@@ -469,7 +469,7 @@ tools:
         - "Fellowship schemes show positive long-term impacts on researcher careers and institutional capacity."
       what_doesnt_work:
         - "Significant compliance costs for institutions."
-        - "Declining success rates (with some UK schemes below 10%) create system inefficiencies and discourage risk-taking."
+        - "Declining success rates (with some UK schemes below 10%). Low success rates indicate that demand for funding far exceeds available supply, creating system inefficiencies and discouraging risk-taking."
         - "Low inter-reviewer agreement and potential bias against highly novel research."
         - "Fragmented data systems can limit strategic portfolio management and value-for-money assessments."
       time_to_impact: >
@@ -599,3 +599,94 @@ tools:
         - regional
       timeline:
         - short_term_outcomes
+
+  - name: "Technology and Innovation Centres"
+    id: "technology_and_innovation_centres"
+    overall_assessment: >
+      Technology and Innovation Centres are large investments that are most effective when focused on sectors and technologies with strong industrial potential where progress depends on R&D which is being held back by high costs or risks associated with specialist R&D facilities, equipment and expertise.
+    how_it_works:
+      description: >
+        Technology and Innovation Centres (TICs) facilitate R&D across mid-high TRLs by providing access to specialist R&D facilities, equipment and expertise, primarily to businesses. Each Centre is focused on a particular sector or technology. Most are independent not-for-profit private organisations, with public investment funding their establishment, and then ongoing operating costs based on the German Fraunhofer ‘thirds’ model with a third coming from core government funding, a third from collaborative R&D, and a third from commercial activities. The Centres are often co-located with universities to facilitate collaborative R&D and bridge academic and industrial research. In the UK, the main TICs are the Catapult Centres, which receive support from the UK government, and Scotland’s Innovation Centres and the Fraunhofer Centre for Applied Photonics, which receive support from the Scottish Government.
+      mechanism: >
+        Provides businesses with shared access to specialist R&D facilities, equipment, and expertise to de-risk innovation, particularly across mid-to-high TRLs. TICs typically operate as independent, not-for-profit organizations with a mixed public-private funding model.
+      complexity: "Moderate"
+      complexity_details: >
+        Complex to establish, but once operating, complexity should reduce and be in the hands of expert skilled TIC leaders.
+      flexibility: "Moderate"
+      flexibility_details: >
+        TICs work best when pursuing both long-horizon initiatives and delivering fast-response projects.
+    effectiveness_and_uk_impact:
+      evidence_summary: >
+        There is limited publicly available comparative quantitative evidence on the performance of UK TICs. However, qualitative findings suggest businesses would not have undertaken activities without the involvement of the Catapult Centres.
+      what_works:
+        - "Firms engaging with Catapult Centres show strong positive impacts, especially in employment, growing nearly 16% faster over six years. Effects are greatest for service, high-tech, and smaller firms."
+        - "Facilitating collaborative R&D and acting as trusted intermediaries."
+        - "Providing access to expertise and state-of-the-art physical infrastructures."
+        - "Being able to pursue strategic long-horizon initiatives and fast-response projects in parallel."
+        - "Being located near to the relevant industries is also likely to be important."
+      what_doesnt_work:
+        - "Unclear strategic focus, which adds duplication and unhelpful competition to the innovation landscape."
+        - "When access to specialist physical infrastructure is not the main mode of operation, and consultancy and policy activities are."
+        - "Accessibility models that SMEs find overpriced and terms and conditions that are hard to work with."
+        - "Poorly designed KPIs with perverse incentives and an imbalance of assessment and long-term stable funding."
+      time_to_impact: >
+        Limited evidence. One evaluation looked at the period 3-6 years post-engagement with the centres.
+    targetability:
+      overall_assessment: >
+        Highly targeted by sector and technology, with location driven by industrial clusters rather than regional policy objectives.
+      sectoral:
+        level: "High"
+        details: "TICs are focused on a particular sector or technology."
+      technological:
+        level: "High"
+        details: "TICs are focused on a particular sector or technology."
+      regional:
+        level: "Low"
+        details: "The location of relevant industrial activities should be driving the regional location of a TIC, which would be expected to result in regional benefits."
+      by_firm_type:
+        level: "Moderate"
+        details: "Can target by firm size."
+    cbp_view_recommendations_for_uk: >
+      Technology and Innovation Centres work best for sectors and technologies where progress is dependent on R&D, where there is industry with the capability for R&D and innovation, but where progress is held back as the R&D activities are too costly or risky for individual firms to develop alone. This is primarily due to the need for critical infrastructure, such as specialised equipment, testing facilities, or demonstration environments. They work best when strategically co-located within existing industry clusters, engaging with a mix of SMEs, academia, and corporates, and where the innovation challenge lies in scaling or commercialising technologies rather than basic research.
+    further_reading:
+      - title: "Evaluating the medium-term business performance effects of engaging with Catapults"
+        author: "Vanino & Roper, 2023"
+        url: "https://www.enterpriseresearch.ac.uk/publications/evaluating-the-medium-term-business-performance-effects-of-engaging-with-catapults-a-propensity-score-matching-difference-in-difference-study/"
+      - title: "Catapult Network Welcomes New Report Demonstrating Catapult Impact"
+        author: "Catapult Network"
+        url: "https://catapult.org.uk/catapult-network-welcomes-new-report-demonstrating-catapult-impact/"
+      - title: "Impact evaluation of Offshore Renewable Energy Catapult"
+        author: "Frontier Economics, 2024"
+        url: "https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21592-impact-evaluation-of-offshore-renewable-energy-catapult/"
+      - title: "Compound Semiconductor Applications Catapult Impact Evaluation Report"
+        author: "Harlow Consulting, 2024"
+        url: "https://csa.catapult.org.uk/news-insights/insights/impact-evaluation-report/"
+      - title: "Catapult Network Review 2021"
+        author: "BEIS, 2021"
+        url: "https://www.gov.uk/government/publications/catapult-network-review-2021-how-the-uks-catapults-can-strengthen-research-and-development-capacity"
+      - title: "Catapults: bridging the gap between research and industry"
+        author: "House of Lords Science and Technology Committee, 2021"
+        url: "https://committees.parliament.uk/work/804/the-contribution-of-innovation-catapults-to-delivering-the-rd-roadmap/publications/"
+    tags:
+      objectives:
+        - develop_innovation_clusters
+        - support_growth_driving_sectors
+        - support_applied_rd_commercialisation
+        - drive_regional_economic_growth
+      innovation_stage:
+        - development
+        - demonstration
+        - deployment
+      sectors:
+        - cross_sector
+        - manufacturing
+        - energy
+      delivery_mechanism:
+        - place_based_grant
+      targeting:
+        - sector_specific
+        - technology_specific
+        - regional
+        - firm_size
+      timeline:
+        - long_term_innovation

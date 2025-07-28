@@ -105,17 +105,8 @@ export const HomePage: React.FC = () => {
           <OptionIcon>🔧</OptionIcon>
           <OptionTitle>Learn about R&D policy tools</OptionTitle>
           <OptionDescription>
-            Discover and explore various policy instruments designed to support 
+            <strong>For policymakers:</strong> Discover and explore various policy instruments designed to support 
             R&D initiatives across different sectors and stages.
-          </OptionDescription>
-        </OptionCard>
-        
-        <OptionCard to="/calculator">
-          <OptionIcon>📊</OptionIcon>
-          <OptionTitle>Calculate return on investment from R&D</OptionTitle>
-          <OptionDescription>
-            Use our interactive calculator to assess the potential returns 
-            and impact of R&D investments.
           </OptionDescription>
         </OptionCard>
         
@@ -123,11 +114,22 @@ export const HomePage: React.FC = () => {
           <OptionIcon>📚</OptionIcon>
           <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
           <OptionDescription>
-            A guide to evaluating the returns from R&D investments with research-backed frameworks.
+            <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
+          </OptionDescription>
+        </OptionCard>
+
+        <OptionCard to="/calculator">
+          <OptionIcon>📊</OptionIcon>
+          <OptionTitle>Calculate return on investment from R&D</OptionTitle>
+          <OptionDescription>
+            <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
+            and impact of R&D investments.
           </OptionDescription>
         </OptionCard>
       </OptionsContainer>
-      
+
+        
+        
       
     </PageContainer>
   );

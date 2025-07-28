@@ -40,7 +40,7 @@ export const ToolkitPage: React.FC = () => {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [showUserGuide, setShowUserGuide] = useState(false);
   const [guideHtml, setGuideHtml] = useState<string>('');
-  const [collapsedSections, setCollapsedSections] = useState<{ objectives: boolean; tools: boolean }>({ objectives: true, tools: false });
+  const [collapsedSections, setCollapsedSections] = useState<{ tools: boolean }>({ tools: false });
   const mainContentRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -104,7 +104,6 @@ export const ToolkitPage: React.FC = () => {
               setSelectedItem(toolFromHash);
               setSelectedItemType('tool');
               setShowUserGuide(false);
-              setCollapsedSections(prev => ({ ...prev, tools: false }));
               return;
             }
           } else if (type === 'objective' && currentAllObjectives) {
@@ -113,7 +112,6 @@ export const ToolkitPage: React.FC = () => {
               setSelectedItem(objectiveFromHash);
               setSelectedItemType('objective');
               setShowUserGuide(false);
-              setCollapsedSections(prev => ({ ...prev, objectives: false }));
               return;
             }
           }
@@ -148,10 +146,6 @@ export const ToolkitPage: React.FC = () => {
     }
   }, [selectedItem, selectedItemType, showUserGuide]);
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
   const addFilter = (tag: string) => {
     if (!activeFilters.includes(tag)) {
       setActiveFilters([...activeFilters, tag]);
@@ -184,13 +178,6 @@ export const ToolkitPage: React.FC = () => {
       tool.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  const filteredObjectives = objectiveGroups.map(group => ({
-    ...group,
-    objectives: group.objectives.filter(objective => 
-      objective.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  })).filter(group => group.objectives.length > 0);
-
   const handleSelectTool = (tool: Tool) => {
     setSelectedItem(tool);
     setSelectedItemType('tool');
@@ -204,17 +191,16 @@ export const ToolkitPage: React.FC = () => {
     setSelectedItemType('objective');
     setShowUserGuide(false);
     navigate(`#objective:${objective.tag}`);
-    setCollapsedSections(prev => ({ ...prev, objectives: false }));
   };
 
-  const toggleSidebarSection = (section: 'objectives' | 'tools') => {
+  const toggleSidebarSection = (section: 'tools') => {
     setCollapsedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
   const SplashMessage = () => (
     <Section style={{ textAlign: 'center', marginTop: '40px' }}>
         <p style={{ fontSize: '1.2rem', color: '#6c757d' }}>
-          Choose a tool or objective from the left to learn more.
+          ◀  Choose a tool from the left to learn more…
         </p>
     </Section>
   );
@@ -227,9 +213,9 @@ export const ToolkitPage: React.FC = () => {
             type="text" 
             name="search" 
             id="search-input" 
-            placeholder="Search objectives & tools..." 
+            placeholder="Search tools..." 
             value={searchTerm} 
-            onChange={handleSearchChange} 
+            onChange={(e) => setSearchTerm(e.target.value)} 
           />
           {activeFilters.length > 0 && (
             <ClearFiltersButton onClick={clearAllFilters}>Clear All Filters</ClearFiltersButton>
@@ -251,31 +237,6 @@ export const ToolkitPage: React.FC = () => {
             ))}
           </FilterChipContainer>
         )}
-        <SidebarSection itemType="objective">
-          <SidebarTitle itemType="objective" onClick={() => toggleSidebarSection('objectives')}>
-            Policy Objectives {collapsedSections.objectives ? '►' : '▼'}
-          </SidebarTitle>
-          {!collapsedSections.objectives && (
-            <ToolList>
-              {filteredObjectives.map(group => (
-                <div key={group.group}>
-                  <SidebarSubheading>{group.group}</SidebarSubheading>
-                  {group.objectives.map(objective => (
-                    <ToolListItem 
-                      key={objective.tag} 
-                      active={!showUserGuide && selectedItemType === 'objective' && selectedItem?.tag === objective.tag}
-                      onClick={() => handleSelectObjective(objective)}
-                      className={selectedItem === objective ? 'selected' : ''}
-                      itemType="objective"
-                    >
-                      {objective.name}
-                    </ToolListItem>
-                  ))}
-                </div>
-              ))}
-            </ToolList>
-          )}
-        </SidebarSection>
         <SidebarSection itemType="tool">
           <SidebarTitle itemType="tool" onClick={() => toggleSidebarSection('tools')}>
             Policy Tools {collapsedSections.tools ? '►' : '▼'}

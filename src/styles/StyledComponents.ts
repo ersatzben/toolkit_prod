@@ -309,6 +309,44 @@ export const Tag = styled.span<{ itemType?: 'tool' | 'objective'; variant?: Comp
   }
 `;
 
+export const Tooltip = styled.div`
+  position: relative;
+  display: inline-block;
+
+  .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: ${newBrandColors.charcoal};
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: ${newBrandColors.charcoal} transparent transparent transparent;
+  }
+
+  &:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
 export const TargetabilityGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

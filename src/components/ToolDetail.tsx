@@ -18,6 +18,7 @@ import {
   TitleContainer,
   ItemTypeIndicator,
   PageTitle,
+  Tooltip,
 } from '../styles/StyledComponents';
 
 interface ToolDetailProps {
@@ -192,7 +193,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
           </TargetabilityGrid>
           {tool.targetability.overall_assessment && (
             <SubSection style={{ marginTop: '20px' }}>
-              <SubSectionTitle itemType="tool">Overall Assessment</SubSectionTitle>
+              <SubSectionTitle itemType="tool">Targetability Assessment</SubSectionTitle>
               <MarkdownText>
                 <SafeMarkdown value={tool.targetability.overall_assessment} />
               </MarkdownText>
@@ -242,14 +243,14 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               const objective = getObjectiveByTag(tagString);
               const tagName = getTagName('objectives', tagString);
               return (
-                <Tag
-                  key={index}
-                  itemType="tool"
-                  onClick={objective ? () => onSelectObjective(objective) : undefined}
-                  style={objective ? { cursor: 'pointer' } : {}}
-                >
-                  {tagName}
-                </Tag>
+                <Tooltip key={index}>
+                  <Tag
+                    itemType="tool"
+                  >
+                    {tagName}
+                  </Tag>
+                  {objective && <span className="tooltiptext">{objective.description}</span>}
+                </Tooltip>
               );
             })}
           </TagContainer>
