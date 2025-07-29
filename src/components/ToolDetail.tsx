@@ -35,7 +35,7 @@ const SafeMarkdown: React.FC<{ value?: unknown }> = ({ value }) => (
   <ReactMarkdown>{typeof value === 'string' ? value : String(value ?? '')}</ReactMarkdown>
 );
 
-export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, onSelectObjective, onAddFilter }) => {
+export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, onAddFilter }) => {
   const getTagName = (category: keyof TagsList['tags'], tag: string) => {
     const foundTag = tagsList.tags[category].find(t => t.tag === tag);
     return foundTag ? foundTag.name : tag;

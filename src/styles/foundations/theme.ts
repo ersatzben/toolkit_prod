@@ -10,6 +10,63 @@ export const newBrandColors = {
   deepRed: '#B3063E',
 };
 
+// Responsive typography scale
+export const typography = {
+  fontSize: {
+    xs: { mobile: '0.75rem', desktop: '0.75rem' },
+    sm: { mobile: '0.875rem', desktop: '0.875rem' },
+    base: { mobile: '1rem', desktop: '1rem' },
+    lg: { mobile: '1.125rem', desktop: '1.125rem' },
+    xl: { mobile: '1.25rem', desktop: '1.5rem' },
+    '2xl': { mobile: '1.5rem', desktop: '1.875rem' },
+    '3xl': { mobile: '2rem', desktop: '2.25rem' },
+    '4xl': { mobile: '2.5rem', desktop: '3.5rem' },
+  },
+  fontWeight: {
+    normal: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+  },
+  lineHeight: {
+    tight: '1.25',
+    normal: '1.5',
+    relaxed: '1.7',
+    loose: '1.8',
+  },
+  fontFamily: {
+    body: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
+    mono: '"SF Mono", Menlo, Monaco, Consolas, monospace',
+  }
+};
+
+// Responsive spacing scale
+export const spacing = {
+  xs: { mobile: '0.25rem', desktop: '0.25rem' },
+  sm: { mobile: '0.5rem', desktop: '0.5rem' },
+  md: { mobile: '1rem', desktop: '1rem' },
+  lg: { mobile: '1.5rem', desktop: '2rem' },
+  xl: { mobile: '2rem', desktop: '2.5rem' },
+  '2xl': { mobile: '2.5rem', desktop: '3rem' },
+};
+
+// Component-specific color variants
+export const toolColors = {
+  primary: newBrandColors.darkGreen,
+  activeBg: newBrandColors.brightGreen + '20',
+  activeHoverBg: newBrandColors.brightGreen + '30',
+  inactiveHoverBg: newBrandColors.lightBlue + '15',
+  tagBackground: newBrandColors.brightGreen + '20',
+};
+
+export const objectiveColors = {
+  primary: newBrandColors.darkBlue,
+  activeBg: newBrandColors.lightBlue + '30',
+  activeHoverBg: newBrandColors.lightBlue + '40',
+  inactiveHoverBg: newBrandColors.lightBlue + '15',
+  tagBackground: newBrandColors.lightBlue + '30',
+};
+
 export const lightTheme = {
   body: newBrandColors.beige,
   text: newBrandColors.charcoal,
@@ -17,10 +74,10 @@ export const lightTheme = {
   background: newBrandColors.beige,
   sidebarBackground: '#FFFFFF',
   sidebarText: newBrandColors.charcoal,
-  sidebarHighlight: newBrandColors.lightBlue + '30', // 30% opacity
+  sidebarHighlight: newBrandColors.lightBlue + '30',
   mainContentBackground: '#FFFFFF',
   cardBackground: '#FFFFFF',
-  borderColor: newBrandColors.lightBlue + '50', // 50% opacity
+  borderColor: newBrandColors.lightBlue + '50',
   accentColor: newBrandColors.darkBlue,
   accentColorObjective: newBrandColors.darkGreen,
   accentColorTool: newBrandColors.darkBlue,
@@ -76,4 +133,4 @@ export const darkTheme = {
   successColor: newBrandColors.brightGreen,
 };
 
-export type ThemeType = typeof lightTheme; 
+export type ThemeType = typeof lightTheme;

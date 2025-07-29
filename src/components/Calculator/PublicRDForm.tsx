@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 import type { PublicRDParams, PublicRDResults, PublicPresetType } from '../../types/Calculator';
 
 const Grid = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 import { IntroductionSection } from './IntroductionSection';
 import { GeneralFrameworkSection } from './GeneralFrameworkSection';
 import { PrivateRDSection } from './PrivateRDSection';
@@ -67,7 +67,7 @@ export const FurtherReadingPage: React.FC = () => {
   };
 
   return (
-    <Page title="UK R&D Policy Toolkit – Guide to Evaluating R&D Returns">
+    <Page title="UK R&D Policy Toolkit" subtitle="Guide to Evaluating R&D Returns">
     <ReadingContainer>
       <Container>
         <Navigation>

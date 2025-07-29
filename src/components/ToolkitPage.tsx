@@ -7,6 +7,15 @@ import {
   ContentRow,
   Sidebar,
   MainContent,
+  MobileToolbar,
+  MobileToolbarTitle,
+  MobileToolbarButton,
+  MobileSidebarContainer,
+  MobileSidebarOverlay,
+  MobileSidebarHeader,
+  MobileSidebarTitle,
+  MobileSidebarCloseButton,
+  MobileSidebarContent,
   ToolList,
   ToolListItem,
   SidebarTitle,
@@ -72,16 +81,31 @@ const ToolView: React.FC<{
 
 export const ToolkitPage: React.FC = () => {
   const [tools, setTools] = useState<Tool[]>([]);
-  const [objectiveGroups, setObjectiveGroups] = useState<ObjectiveGroup[]>([]);
+  const [, setObjectiveGroups] = useState<ObjectiveGroup[]>([]);
   const [allObjectives, setAllObjectives] = useState<Objective[]>([]);
   const [tagsList, setTagsList] = useState<TagsList | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [guideHtml, setGuideHtml] = useState<string>('');
   const [collapsedSections, setCollapsedSections] = useState<{ tools: boolean }>({ tools: false });
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Prevent body scroll when sidebar is open
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [sidebarOpen]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -186,11 +210,34 @@ export const ToolkitPage: React.FC = () => {
     setCollapsedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
-    <Page title="UK R&D Policy Toolkit – Learn about R&D Policy Tools">
-    <ContentRow>
-      <Sidebar>
-        <FilterBarContainer>
+    <Page 
+      title="UK R&D Policy Toolkit – Learn about R&D Policy Tools"
+      subtitle="Learn about R&D Policy Tools"
+    >
+      <MobileToolbar>
+        <MobileToolbarTitle>Policy Tools</MobileToolbarTitle>
+        <MobileToolbarButton onClick={handleSidebarToggle}>
+          ☰ Browse Tools
+        </MobileToolbarButton>
+      </MobileToolbar>
+      
+      {sidebarOpen && (
+        <>
+          <MobileSidebarOverlay onClick={() => setSidebarOpen(false)} />
+          <MobileSidebarContainer>
+        <MobileSidebarHeader>
+          <MobileSidebarTitle>Policy Tools</MobileSidebarTitle>
+          <MobileSidebarCloseButton onClick={() => setSidebarOpen(false)}>
+            ×
+          </MobileSidebarCloseButton>
+        </MobileSidebarHeader>
+        <MobileSidebarContent>
+          <FilterBarContainer>
           <SearchInput 
             type="text" 
             name="search" 
@@ -220,25 +267,77 @@ export const ToolkitPage: React.FC = () => {
           </FilterChipContainer>
         )}
         <SidebarSection itemType="tool">
-          <SidebarTitle itemType="tool" onClick={() => toggleSidebarSection('tools')}>
-            Policy Tools {collapsedSections.tools ? '►' : '▼'}
-          </SidebarTitle>
-          {!collapsedSections.tools && (
-            <ToolList>
+          <ToolList>
               {filteredTools.map((tool) => (
                 <ToolListItem
                   key={tool.tag}
                   active={location.pathname === `/toolkit/tool/${tool.tag}`}
-                  onClick={() => handleSelectTool(tool)}
+                  onClick={() => {
+                    handleSelectTool(tool);
+                    setSidebarOpen(false); // Close mobile sidebar when tool is selected
+                  }}
                 >
                   {tool.name}
                 </ToolListItem>
               ))}
             </ToolList>
+          </SidebarSection>
+        </MobileSidebarContent>
+        </MobileSidebarContainer>
+        </>
+      )}
+
+      <ContentRow>
+        <Sidebar>
+          <FilterBarContainer>
+            <SearchInput 
+              type="text" 
+              name="search" 
+              id="search-input-desktop" 
+              placeholder="Search tools..." 
+              value={searchTerm} 
+              onChange={(e) => setSearchTerm(e.target.value)} 
+            />
+            {activeFilters.length > 0 && (
+              <ClearFiltersButton onClick={clearAllFilters}>Clear All Filters</ClearFiltersButton>
+            )}
+          </FilterBarContainer>
+          {(searchTerm || activeFilters.length > 0) && (
+            <FilterChipContainer>
+              {activeFilters.map(filter => (
+                <FilterChip key={filter}>
+                  {tagsList?.tags.objectives.find(t => t.tag === filter)?.name || 
+                   tagsList?.tags.innovation_stage.find(t => t.tag === filter)?.name || 
+                   tagsList?.tags.sectors.find(t => t.tag === filter)?.name || 
+                   tagsList?.tags.delivery_mechanism.find(t => t.tag === filter)?.name ||
+                   tagsList?.tags.targeting.find(t => t.tag === filter)?.name ||
+                   tagsList?.tags.timeline.find(t => t.tag === filter)?.name || 
+                   filter}
+                  <RemoveChipButton onClick={() => removeFilter(filter)}>x</RemoveChipButton>
+                </FilterChip>
+              ))}
+            </FilterChipContainer>
           )}
-        </SidebarSection>
-      </Sidebar>
-      <MainContent ref={mainContentRef}>
+          <SidebarSection itemType="tool">
+            <SidebarTitle itemType="tool" onClick={() => toggleSidebarSection('tools')}>
+              Policy Tools {collapsedSections.tools ? '►' : '▼'}
+            </SidebarTitle>
+            {!collapsedSections.tools && (
+              <ToolList>
+                {filteredTools.map((tool) => (
+                  <ToolListItem
+                    key={tool.tag}
+                    active={location.pathname === `/toolkit/tool/${tool.tag}`}
+                    onClick={() => handleSelectTool(tool)}
+                  >
+                    {tool.name}
+                  </ToolListItem>
+                ))}
+              </ToolList>
+            )}
+          </SidebarSection>
+        </Sidebar>
+        <MainContent ref={mainContentRef}>
         <Routes>
           <Route path="/" element={<SplashMessage />} />
           <Route path="/guide" element={<UserGuide guideHtml={guideHtml} />} />

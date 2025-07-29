@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 import type { TabType, PrivateRDParams, PublicRDParams, PrivateRDResults, PublicRDResults } from '../../types/Calculator';
 import { PrivateRDForm } from './PrivateRDForm';
 import { PublicRDForm } from './PublicRDForm';
@@ -178,7 +178,7 @@ export const CalculatorPage: React.FC = () => {
   }, [privateParams, publicParams]);
 
   return (
-    <Page title="UK R&D Policy Toolkit – Calculate Return on Investment">
+    <Page title="UK R&D Policy Toolkit" subtitle="Calculate Return on Investment">
     <CalculatorContainer>
       <Container>
         <MainCard>

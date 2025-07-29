@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { newBrandColors } from '../styles/theme';
+import { newBrandColors } from '../styles/foundations/theme';
 import { Page } from './Page';
 
 const PageContainer = styled.div`
@@ -12,6 +12,14 @@ const PageContainer = styled.div`
   background: linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
   padding: 2rem;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const WelcomeSection = styled.div`
@@ -26,6 +34,14 @@ const MainTitle = styled.h1`
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   color: ${newBrandColors.beige};
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -43,6 +59,11 @@ const OptionsContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 `;
 
 const OptionCard = styled(Link)`
@@ -92,7 +113,7 @@ const OptionDescription = styled.p`
 
 export const HomePage: React.FC = () => {
   return (
-    <Page>
+    <Page showBannerOnMobile={true}>
       <PageContainer>
         <WelcomeSection>
           <MainTitle>UK R&D Policy Toolkit</MainTitle>

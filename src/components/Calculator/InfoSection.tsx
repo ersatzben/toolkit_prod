@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 
 const InfoSectionContainer = styled.div`
   background: rgba(255,255,255,0.9);

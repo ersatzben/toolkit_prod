@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 
 const FormulaContainer = styled.div`
   background: linear-gradient(135deg, ${newBrandColors.lightBlue}20, ${newBrandColors.beige}30);

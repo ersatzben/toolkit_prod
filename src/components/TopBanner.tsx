@@ -2,9 +2,13 @@
 import React from 'react';
 import { TopBannerContainer, TopBannerText } from '../styles/StyledComponents';
 
-export const TopBanner: React.FC = () => {
+interface TopBannerProps {
+  showOnMobile?: boolean;
+}
+
+export const TopBanner: React.FC<TopBannerProps> = ({ showOnMobile = false }) => {
   return (
-    <TopBannerContainer>
+    <TopBannerContainer className={showOnMobile ? 'show-on-mobile' : 'hide-on-mobile'}>
       <TopBannerText>
         <strong>This is an experimental beta version.</strong> 
         We welcome feedback at <a href="mailto:contact@britishprogress.org">contact@britishprogress.org</a>
