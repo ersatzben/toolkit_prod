@@ -140,7 +140,7 @@ export const MobileSidebarCloseButton = styled.button`
 `;
 
 export const MobileSidebarContent = styled.div`
-  padding: 0;
+  padding: ${spacing.sm.mobile};
   display: flex;
   flex-direction: column;
   flex: 1;

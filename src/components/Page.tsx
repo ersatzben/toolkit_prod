@@ -12,7 +12,7 @@ export interface PageProps {
 export const Page: React.FC<PageProps> = ({ title, subtitle, showBannerOnMobile = false, children }) => {
     return (
         <>
-            <TopBanner />
+            <TopBanner showOnMobile={showBannerOnMobile} />
             {title && <Header title={title} subtitle={subtitle} />}
             {children}
         </>

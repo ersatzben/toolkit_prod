@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ title, subtitle }) => {
       </LogoContainer>
       <HeaderGradient>
         <HeaderTitleContainer>
-          <HeaderTitle>UK R&D Policy Toolkit</HeaderTitle>
+          <HeaderTitle>{title}</HeaderTitle>
           {subtitle && <HeaderSubtitle>{subtitle}</HeaderSubtitle>}
         </HeaderTitleContainer>
         <HeaderNav>
@@ -52,8 +52,8 @@ export const Header: React.FC<HeaderProps> = ({ title, subtitle }) => {
           ☰
         </MobileMenuButton>
       </HeaderGradient>
-      <MobileNavOverlay isOpen={mobileNavOpen} onClick={() => setMobileNavOpen(false)} />
-      <MobileNavMenu isOpen={mobileNavOpen}>
+      <MobileNavOverlay $isOpen={mobileNavOpen} onClick={() => setMobileNavOpen(false)} />
+      <MobileNavMenu $isOpen={mobileNavOpen}>
         <MobileMenuHeader>
           <MobileMenuTitle>Menu</MobileMenuTitle>
           <MobileMenuCloseButton onClick={() => setMobileNavOpen(false)}>

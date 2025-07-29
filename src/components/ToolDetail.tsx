@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import type { Tool, TagsList, Objective } from '../types/Tool';
 import {
@@ -27,6 +27,7 @@ interface ToolDetailProps {
   objectives: Objective[];
   onSelectObjective: (objective: Objective) => void;
   onAddFilter: (tag: string) => void;
+  onOpenMobileSidebar: () => void;
 }
 
 // Helper to ensure we always pass a string to ReactMarkdown, preventing runtime errors if the
@@ -35,7 +36,9 @@ const SafeMarkdown: React.FC<{ value?: unknown }> = ({ value }) => (
   <ReactMarkdown>{typeof value === 'string' ? value : String(value ?? '')}</ReactMarkdown>
 );
 
-export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, onAddFilter }) => {
+export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, onAddFilter, onOpenMobileSidebar }) => {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
   const getTagName = (category: keyof TagsList['tags'], tag: string) => {
     const foundTag = tagsList.tags[category].find(t => t.tag === tag);
     return foundTag ? foundTag.name : tag;
@@ -43,6 +46,20 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
 
   const getObjectiveByTag = (tag: string): Objective | undefined => {
     return objectives.find(o => o.tag === tag);
+  };
+
+  const handleFilterClick = (tag: string) => {
+    onAddFilter(tag);
+    // Open mobile sidebar when filter is clicked on mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      onOpenMobileSidebar();
+    }
+  };
+
+  const handleTooltipClick = (tagString: string) => {
+    // Toggle tooltip on mobile
+    setActiveTooltip(activeTooltip === tagString ? null : tagString);
   };
 
   const renderList = (items?: string[]) => {
@@ -243,13 +260,19 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               const objective = getObjectiveByTag(tagString);
               const tagName = getTagName('objectives', tagString);
               return (
-                <Tooltip key={index}>
+                <Tooltip key={index} className={activeTooltip === tagString ? 'mobile-active' : ''}>
                   <Tag
                     itemType="tool"
+                    onClick={() => handleTooltipClick(tagString)}
+                    style={{ cursor: 'pointer' }}
                   >
                     {tagName}
                   </Tag>
-                  {objective && <span className="tooltiptext">{objective.description}</span>}
+                  {objective && (
+                    <span className="tooltiptext">
+                      {objective.description}
+                    </span>
+                  )}
                 </Tooltip>
               );
             })}
@@ -265,7 +288,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.innovation_stage || []).map((tag, index) => {
               const tagName = getTagName('innovation_stage', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -278,7 +301,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.sectors || []).map((tag, index) => {
               const tagName = getTagName('sectors', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -291,7 +314,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.targeting || []).map((tag, index) => {
               const tagName = getTagName('targeting', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -304,7 +327,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.timeline || []).map((tag, index) => {
               const tagName = getTagName('timeline', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );

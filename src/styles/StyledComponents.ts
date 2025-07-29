@@ -228,27 +228,28 @@ export const Tooltip = styled.div`
     border-radius: 6px;
     padding: 8px;
     position: absolute;
-    z-index: 1;
+    z-index: 1000;
     bottom: 125%;
     left: 50%;
     margin-left: -110px;
     opacity: 0;
     transition: opacity 0.3s;
+    font-size: 0.8rem;
+    line-height: 1.4;
 
     ${media.tablet} {
       width: 180px;
       margin-left: -90px;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
     }
 
     ${media.mobile} {
-      width: 200px;
-      margin-left: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      position: fixed;
-      bottom: auto;
-      top: 10px;
+      width: 250px;
+      margin-left: -125px;
+      font-size: 0.8rem;
+      bottom: 150%;
+      /* Better positioning for mobile - above the tag */
+      position: absolute;
     }
   }
 
@@ -261,17 +262,25 @@ export const Tooltip = styled.div`
     border-width: 5px;
     border-style: solid;
     border-color: ${newBrandColors.charcoal} transparent transparent transparent;
-
-    ${media.mobile} {
-      top: auto;
-      bottom: 100%;
-      border-color: transparent transparent ${newBrandColors.charcoal} transparent;
-    }
   }
 
   &:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+
+    ${media.mobile} {
+      /* Don't show on hover on mobile - only on click */
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  /* Mobile click functionality */
+  &.mobile-active .tooltiptext {
+    ${media.mobile} {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 `;
 

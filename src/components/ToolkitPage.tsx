@@ -3,6 +3,7 @@ import { parse } from 'yaml';
 import { useParams, useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import type { Tool, TagsList, Objective } from '../types/Tool';
 import { ToolDetail } from './ToolDetail';
+import { FilterInterface } from './FilterInterface';
 import {
   ContentRow,
   Sidebar,
@@ -59,9 +60,17 @@ const ToolView: React.FC<{
   tagsList: TagsList | null;
   onSelectObjective: (objective: Objective) => void;
   onAddFilter: (tag: string) => void;
-}> = ({ tools, allObjectives, tagsList, onSelectObjective, onAddFilter }) => {
+  onOpenMobileSidebar: () => void;
+}> = ({ tools, allObjectives, tagsList, onSelectObjective, onAddFilter, onOpenMobileSidebar }) => {
   const { tag } = useParams<{ tag: string }>();
   const tool = tools.find(t => t.tag === tag);
+  
+  // Scroll to top when tool changes
+  useEffect(() => {
+    if (tool) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [tag, tool]);
   
   if (!tool || !tagsList) {
     return <div>Tool not found</div>;
@@ -74,6 +83,7 @@ const ToolView: React.FC<{
       tagsList={tagsList}
       objectives={allObjectives}
       onAddFilter={onAddFilter}
+      onOpenMobileSidebar={onOpenMobileSidebar}
     />
   );
 };
@@ -176,6 +186,14 @@ export const ToolkitPage: React.FC = () => {
     setActiveFilters(activeFilters.filter(tag => tag !== tagToRemove));
   };
 
+  const toggleFilter = (tag: string) => {
+    if (activeFilters.includes(tag)) {
+      removeFilter(tag);
+    } else {
+      addFilter(tag);
+    }
+  };
+
   const clearAllFilters = () => {
     setSearchTerm('');
     setActiveFilters([]);
@@ -216,7 +234,7 @@ export const ToolkitPage: React.FC = () => {
 
   return (
     <Page 
-      title="UK R&D Policy Toolkit – Learn about R&D Policy Tools"
+      title="UK R&D Policy Toolkit"
       subtitle="Learn about R&D Policy Tools"
     >
       <MobileToolbar>
@@ -266,6 +284,11 @@ export const ToolkitPage: React.FC = () => {
             ))}
           </FilterChipContainer>
         )}
+        <FilterInterface
+          tagsList={tagsList}
+          activeFilters={activeFilters}
+          onFilterToggle={toggleFilter}
+        />
         <SidebarSection itemType="tool">
           <ToolList>
               {filteredTools.map((tool) => (
@@ -318,6 +341,11 @@ export const ToolkitPage: React.FC = () => {
               ))}
             </FilterChipContainer>
           )}
+          <FilterInterface
+            tagsList={tagsList}
+            activeFilters={activeFilters}
+            onFilterToggle={toggleFilter}
+          />
           <SidebarSection itemType="tool">
             <SidebarTitle itemType="tool" onClick={() => toggleSidebarSection('tools')}>
               Policy Tools {collapsedSections.tools ? '►' : '▼'}
@@ -350,6 +378,7 @@ export const ToolkitPage: React.FC = () => {
                 tagsList={tagsList}
                 onSelectObjective={handleSelectObjective}
                 onAddFilter={addFilter}
+                onOpenMobileSidebar={() => setSidebarOpen(true)}
               />
             } 
           />

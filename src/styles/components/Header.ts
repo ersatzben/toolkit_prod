@@ -141,7 +141,7 @@ export const MobileMenuButton = styled.button`
   }
 `;
 
-export const MobileNavMenu = styled.div<{ isOpen?: boolean }>`
+export const MobileNavMenu = styled.div<{ $isOpen?: boolean }>`
   display: none;
   
   ${media.tablet} {
@@ -153,14 +153,14 @@ export const MobileNavMenu = styled.div<{ isOpen?: boolean }>`
     border-radius: 0 0 0 12px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transform: translateX(${props => props.isOpen ? '0' : '100%'});
+    transform: translateX(${props => props.$isOpen ? '0' : '100%'});
     transition: transform 0.3s ease;
     z-index: 999;
     min-width: 200px;
   }
 `;
 
-export const MobileNavOverlay = styled.div<{ isOpen?: boolean }>`
+export const MobileNavOverlay = styled.div<{ $isOpen?: boolean }>`
   display: none;
   
   ${media.tablet} {
@@ -172,8 +172,8 @@ export const MobileNavOverlay = styled.div<{ isOpen?: boolean }>`
     height: calc(100vh - ${headerHeight});
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 998;
-    opacity: ${props => props.isOpen ? 1 : 0};
-    visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+    opacity: ${props => props.$isOpen ? 1 : 0};
+    visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 `;
