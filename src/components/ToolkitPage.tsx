@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import { parse } from 'yaml';
 import { useParams, useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import type { Tool, TagsList, Objective } from '../types/Tool';
@@ -31,6 +32,7 @@ import {
   Section,
   MarkdownText,
 } from '../styles/StyledComponents';
+import { media } from '../styles/foundations/breakpoints';
 import { Page } from './Page';
 
 interface ObjectiveGroup {
@@ -38,19 +40,56 @@ interface ObjectiveGroup {
   objectives: Objective[];
 }
 
+// Responsive splash message
+const ResponsiveMessage = styled.p`
+  font-size: 1.2rem;
+  color: #6c757d;
+  
+  &::before {
+    content: "☰  Use the menu above to choose a tool and learn more…";
+  }
+  
+  ${media.minTablet} {
+    &::before {
+      content: "◀  Choose a tool from the left to learn more…";
+    }
+  }
+`;
+
 // Main content components for different routes
 const SplashMessage = () => (
   <Section style={{ textAlign: 'center', marginTop: '40px' }}>
-      <p style={{ fontSize: '1.2rem', color: '#6c757d' }}>
-        ◀  Choose a tool from the left to learn more…
-      </p>
+      <ResponsiveMessage />
   </Section>
 );
 
-const UserGuide: React.FC<{ guideHtml: string }> = ({ guideHtml }) => (
+const UserGuide: React.FC = () => (
   <Section>
     <PageTitle>How to use this toolkit</PageTitle>
-    <MarkdownText dangerouslySetInnerHTML={{ __html: guideHtml }} />
+    <MarkdownText>
+      <p>
+        This toolkit provides comprehensive analysis of innovation policy instruments 
+        to help policymakers make evidence-based decisions about R&D investment and innovation support.
+      </p>
+      
+      <h2>Getting Started</h2>
+      <p>
+        Browse the policy tools using the sidebar filters, or use the R&D calculator 
+        to estimate returns on research investment.
+      </p>
+      
+      <h2>Understanding the Analysis</h2>
+      <p>
+        Each tool includes effectiveness analysis, implementation guidance, and 
+        recommendations based on international evidence and UK-specific context.
+      </p>
+      
+      <h2>Using the Calculator</h2>
+      <p>
+        The R&D investment calculator uses the perpetual inventory method to 
+        estimate benefit-cost ratios for both private and public R&D spending.
+      </p>
+    </MarkdownText>
   </Section>
 );
 
@@ -91,12 +130,11 @@ const ToolView: React.FC<{
 
 export const ToolkitPage: React.FC = () => {
   const [tools, setTools] = useState<Tool[]>([]);
-  const [, setObjectiveGroups] = useState<ObjectiveGroup[]>([]);
   const [allObjectives, setAllObjectives] = useState<Objective[]>([]);
   const [tagsList, setTagsList] = useState<TagsList | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const [guideHtml, setGuideHtml] = useState<string>('');
+  const [loadingError, setLoadingError] = useState<string | null>(null);
   const [collapsedSections, setCollapsedSections] = useState<{ tools: boolean }>({ tools: false });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -120,18 +158,16 @@ export const ToolkitPage: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [toolsResponse, tagsResponse, objectivesGroupedResponse, guideResponse] = await Promise.all([
+        const [toolsResponse, tagsResponse, objectivesGroupedResponse] = await Promise.all([
           fetch('/tools_v5.yaml'),
           fetch('/tags_list.yaml'),
           fetch('/objectives_grouped.yaml'),
-          fetch('/guide.html'),
         ]);
         
-        const [toolsYaml, tagsYaml, objectivesGroupedYaml, guideText] = await Promise.all([
+        const [toolsYaml, tagsYaml, objectivesGroupedYaml] = await Promise.all([
           toolsResponse.text(),
           tagsResponse.text(),
           objectivesGroupedResponse.text(),
-          guideResponse.text(),
         ]);
 
         const toolsData = parse(toolsYaml);
@@ -145,15 +181,13 @@ export const ToolkitPage: React.FC = () => {
             .replace(/[^a-z0-9]+/g, '_')
             .replace(/^_+|_+$/g, '');
 
-        const toolsWithTag = toolsData.tools.map((t: any) => ({
+        const toolsWithTag = toolsData.tools.map((t: Tool) => ({
           ...t,
           tag: t.tag || slugify(t.name),
         }));
 
         setTools(toolsWithTag);
         setTagsList(tagsData);
-        setObjectiveGroups(objectivesGroupedData.objective_groups);
-        setGuideHtml(guideText);
 
         const currentAllObjectives = objectivesGroupedData.objective_groups.reduce((acc: Objective[], group: ObjectiveGroup) => {
           return acc.concat(group.objectives);
@@ -161,15 +195,7 @@ export const ToolkitPage: React.FC = () => {
         setAllObjectives(currentAllObjectives);
 
       } catch (error) {
-        console.error('Error loading data:', error);
-        try {
-            const guideResponse = await fetch('/guide.html');
-            const guideText = await guideResponse.text();
-            setGuideHtml(guideText);
-        } catch (guideError) {
-            console.error('Error loading guide HTML:', guideError);
-            setGuideHtml('<p>Error loading user guide. Please try again later.</p>');
-        }
+        setLoadingError('Failed to load toolkit data. Please refresh the page to try again.');
       }
     };
 
@@ -366,9 +392,21 @@ export const ToolkitPage: React.FC = () => {
           </SidebarSection>
         </Sidebar>
         <MainContent ref={mainContentRef}>
+        {loadingError && (
+          <div style={{
+            padding: '1rem',
+            margin: '1rem',
+            backgroundColor: '#fee',
+            border: '1px solid #f88',
+            borderRadius: '4px',
+            color: '#800'
+          }}>
+            <strong>Error:</strong> {loadingError}
+          </div>
+        )}
         <Routes>
           <Route path="/" element={<SplashMessage />} />
-          <Route path="/guide" element={<UserGuide guideHtml={guideHtml} />} />
+          <Route path="/guide" element={<UserGuide />} />
           <Route 
             path="/tool/:tag" 
             element={

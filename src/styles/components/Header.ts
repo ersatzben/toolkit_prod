@@ -70,15 +70,15 @@ export const HeaderGradient = styled.div`
 export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
   margin-left: auto;
 
   ${media.tablet} {
-    gap: 15px;
+    gap: 12px;
   }
 
   ${media.mobile} {
-    display: none; /* Hide regular nav on mobile - items will be in hamburger menu */
+    gap: 10px;
   }
 `;
 
@@ -108,31 +108,43 @@ export const HeaderNavLink = styled.a`
 `;
 
 export const HomeIcon = styled.span`
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
   
-  ${media.tablet} {
-    font-size: 1.1rem;
+  svg {
+    width: 20px;
+    height: 20px;
+    
+    ${media.tablet} {
+      width: 18px;
+      height: 18px;
+    }
+    
+    ${media.mobile} {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
 // Mobile menu components
 export const MobileMenuButton = styled.button`
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: ${newBrandColors.beige};
-  font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
-  margin-left: auto; /* Push to right side */
-  
-  ${media.tablet} {
-    display: block;
-  }
+  border-radius: 4px;
+  transition: all 0.2s ease;
 
   &:hover {
     color: ${newBrandColors.brightGreen};
+    background-color: ${newBrandColors.lightBlue}20;
   }
 
   &:focus {
@@ -142,40 +154,38 @@ export const MobileMenuButton = styled.button`
 `;
 
 export const MobileNavMenu = styled.div<{ $isOpen?: boolean }>`
-  display: none;
-  
-  ${media.tablet} {
-    display: block;
-    position: fixed;
-    top: ${headerHeight};
-    right: 0;
-    background: linear-gradient(180deg, ${newBrandColors.darkBlue} 0%, ${newBrandColors.darkGreen} 100%);
-    border-radius: 0 0 0 12px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transform: translateX(${props => props.$isOpen ? '0' : '100%'});
-    transition: transform 0.3s ease;
-    z-index: 999;
-    min-width: 200px;
+  display: block;
+  position: fixed;
+  top: ${headerHeight};
+  right: 0;
+  background: linear-gradient(180deg, ${newBrandColors.darkBlue} 0%, ${newBrandColors.darkGreen} 100%);
+  border-radius: 0 0 0 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateX(${props => props.$isOpen ? '0' : '100%'});
+  transition: transform 0.3s ease;
+  z-index: 1001;
+  min-width: 200px;
+
+  ${media.mobile} {
+    padding: 15px;
+    min-width: 180px;
+    max-width: 250px;
   }
 `;
 
 export const MobileNavOverlay = styled.div<{ $isOpen?: boolean }>`
-  display: none;
-  
-  ${media.tablet} {
-    display: block;
-    position: fixed;
-    top: ${headerHeight};
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - ${headerHeight});
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    opacity: ${props => props.$isOpen ? 1 : 0};
-    visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: ${props => props.$isOpen ? 1 : 0};
+  visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 `;
 
 export const MobileNavList = styled.ul`
