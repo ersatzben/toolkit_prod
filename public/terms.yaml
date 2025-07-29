@@ -9,7 +9,7 @@ terms:
     description: "Small and Medium-sized Enterprises. Businesses that fall below certain size thresholds in terms of employee numbers, annual turnover, or balance sheet totals. In the UK, SMEs typically have fewer than 250 employees and annual turnover under £50 million."
   - name: "Leverage"
     description: "In a financial context, the ratio of private investment generated compared to public investment. For example, '10:1 leverage' means £10 of private investment is generated for every £1 of public money invested."
-    name: "leverage"
+  - name: "leverage"
     description: "In a financial context, the ratio of private investment generated compared to public investment. For example, '10:1 leverage' means £10 of private investment is generated for every £1 of public money invested."
   - name: "additionality"
     description: "The extent to which publicly funded activities are additional to what would have happened anyway without government intervention. High additionality means the funding genuinely creates new activity rather than just substituting for private investment."

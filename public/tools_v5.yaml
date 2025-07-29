@@ -46,6 +46,7 @@ tools:
     economic_analysis: >
       This tool is designed to correct two fundamental market failures in innovation. The first is the *appropriability problem*, where firms cannot capture the full financial value of their own R&D because the knowledge created inevitably *spills over* to benefit competitors and the wider economy, leading to underinvestment. The second is information asymmetry, which recognises that firms have superior knowledge about their own technological and commercial opportunities compared to the government.
 
+
       By reducing the effective cost of R&D, tax reliefs directly address the appropriability problem by allowing firms to keep a larger share of the returns from their investment. This mechanism respects information asymmetry by amplifying existing market signals and relying on firms' own judgement, rather than having the government attempt to pick specific winners. However, this market-led approach creates inherent limitations when strategic coordination is required or when significant positive externalities concentrate in areas with limited commercial incentives – such as basic research, infrastructure development, or technologies addressing climate change – which require more targeted intervention mechanisms capable of directing resources toward socially optimal outcomes regardless of immediate commercial viability.
     cbp_view_recommendations_for_uk: >
       R&D tax reliefs are a core part of UK innovation policy and should be maintained for broad-based stimulus. With over two-thirds of UK government support to business R&D coming from these reliefs, a case could be made to restructure them or repurpose some of the budget for more targeted outcomes. However, they are poorly suited to incentivise the strategic direction of technological capabilities or regional rebalancing. A drastic reduction of the relief would be unhelpfully destabilising to our business community who have recently had to get to grips with changes and have been crying out for policy stability.
@@ -122,6 +123,7 @@ tools:
     economic_analysis: >
       Prizes address a specific type of coordination failure. This situation arises when a funding agency, like the government, has a clear view of a problem that needs solving but lacks information on the best technical path or which organisation is best equipped to find the solution.
 
+
       Based on contest theory, prizes incentivise multiple teams to invest their own resources in a competition for a final reward. This eliminates the *moral hazard* (where an actor takes on more risk because another bears the cost) that can be present in grants, as the government only pays for a successful outcome. However, this competitive approach creates a risk of socially inefficient duplication of research effort, which requires careful prize design to manage.
     cbp_view_recommendations_for_uk: >
       Innovation inducement prizes are most suitable when the goal is known but the optimal technological path and innovator are unknown. This is likely to be common around TRL 3. Prizes are powerful for drawing in non-traditional innovators, but this effect is likely to be greater when upfront R&D costs are relatively low, and the technical problem is currently of low salience, making publicity more likely to attract new innovators.
@@ -187,6 +189,7 @@ tools:
         details: "Larger firms are typically better positioned to deliver at the scale required by government commitments."
     economic_analysis: >
       This tool is an extension of the government's procurement strategy to address demand-side market failures, creating guaranteed markets for innovations that meet specific public sector requirements. The mechanism proves most effective when agencies possess clear operational needs for particular technologies but existing commercial solutions prove inadequate, even when underlying technical feasibility appears established.
+
 
       By establishing credible, legally binding commitments to purchase products meeting detailed technical specifications, AMCs transform government procurement requirements into innovation incentives. This guaranteed demand enables private actors to justify the substantial fixed costs required for commercialisation, helping viable innovations cross the "valley of death" between prototype development and large-scale market deployment. While the primary justification centres on securing government access to needed technologies, the mechanism generates secondary benefits by creating pathways for broader commercial application of innovations that might otherwise remain underdeveloped.
     cbp_view_recommendations_for_uk: >
@@ -260,6 +263,7 @@ tools:
         details: "Regulators can choose to prioritise access for start-ups and [term:SMEs], which may find it more difficult to bear regulatory costs."
     economic_analysis: >
       Sandboxes address information inefficiencies within regulatory systems rather than traditional market failures. The core problem they solve is *regulatory lag*, where the rules and processes for approving new products have not kept pace with the speed of technological innovation. This lag creates uncertainty and high transaction costs for firms, blocking or delaying new technologies from reaching the market.
+
 
       The sandbox functions as a controlled environment where firms and regulators can produce information together. Regulators learn about the new technology, while firms learn how to demonstrate compliance under modified, bespoke rules. However, sandboxes prove inappropriate when primary constraints involve insufficient funding or early-stage technical uncertainty rather than regulatory barriers, when existing frameworks already adequately address the innovation, or when consumer protection risks from regulatory flexibility exceed potential benefits. The mechanism also fails when regulatory agencies lack sufficient supervisory capacity for intensive monitoring or when systemic risks warrant comprehensive evaluation rather than experimental deployment.
     cbp_view_recommendations_for_uk: >
@@ -335,6 +339,7 @@ tools:
         details: "Innovation loans could be restricted to SMEs, where benefits are larger."
     economic_analysis: >
       Innovation loans address capital market imperfections that arise from information gaps between innovators and lenders. Due to information asymmetry, traditional financial institutions often lack the specialist expertise to accurately assess the technical merit and commercial potential of innovative projects. This leads them to undervalue these projects, resulting in credit rationing and a financing gap in the ecosystem.
+
 
       However, this tool requires government agencies to adopt sophisticated banking capabilities, including portfolio risk management, credit assessment, and loan pricing mechanisms that balance additionality against implicit subsidy effects. Unlike grants, loan programmes demand substantial capital deployment and ongoing monitoring systems to manage default risks while ensuring programme sustainability. This administrative complexity means the mechanism proves economically efficient only when financing constraints constitute the primary barrier, as opposed to insufficient commercial incentives, and when the scale of intervention justifies the considerable institutional infrastructure required for effective portfolio management.
     cbp_view_recommendations_for_uk: >
@@ -421,6 +426,7 @@ tools:
         details: "Can target by firm size."
     economic_analysis: >
       This tool is designed to address multiple market failures simultaneously, primarily the coordination failures and knowledge spillover inefficiencies that prevent different types of organisations from working together effectively. For instance, universities may excel at research but lack commercial expertise, while businesses may have market knowledge but underinvest in early-stage R&D.
+
 
       Collaborative grants create an incentive structure that bridges these institutional boundaries, encouraging the risk-sharing and knowledge transfer needed to solve complex problems. However, the mechanism frequently fails when coordination costs exceed collaboration benefits, when complex intellectual property negotiations create insurmountable partnership barriers, or when fundamental differences in institutional timelines and success metrics prevent effective knowledge transfer. The tool proves inappropriate when innovation challenges can be adequately addressed through single-institution approaches or when misaligned incentive structures between academic and commercial partners undermine programme objectives.
     cbp_view_recommendations_for_uk: >
@@ -512,6 +518,7 @@ tools:
     economic_analysis: >
       These grants directly address the market's failure to produce fundamental research, which is often a 'public good'. This means the knowledge it creates is *non-rival* (i.e. one person's use doesn't prevent another's), and its benefits are hard to exclude others from. Because any single actor struggles to capture the full value of such research, private firms have a systematic incentive to underinvest, even though the long-term societal benefits are immense.
 
+
       By using public funds and an expert-led peer review system to allocate them, these grants correct this underinvestment while supporting high-risk, exploratory science. However, the mechanism proves inappropriate when immediate commercial applications are required, when declining success rates discourage participation and risk-taking, or when substantial administrative overhead exceeds research value. The approach also fails when coordinated research programmes are necessary, as the investigator-led model may produce fragmented efforts lacking systematic integration for complex technical challenges.
     cbp_view_recommendations_for_uk: >
       This tool is best used for funding basic, high-risk, long-term research where market failures prevent adequate private investment. It is effective for addressing national challenges and building capability in emerging fields. It should be avoided for near-market development or when immediate commercial impact is required. For best results, grants should be combined with stable institutional funding and integrated with innovation support to link research to commercialisation.
@@ -601,6 +608,7 @@ tools:
     economic_analysis: >
       This procurement-based tool addresses the challenge of aligning public sector needs with private sector innovation capacity. Its rationale is rooted in the government's unique position as a large-scale, risk-tolerant lead customer for innovations that may not have an immediate commercial market.
 
+
       The mechanism works by de-risking the development of customised solutions that solve specific public sector problems, providing funding and clear demand signals for niche products not adequately addressed by existing commercial offerings. However, the approach proves inappropriate when adequate commercial solutions already exist, when procurement challenges stem from regulatory rather than technological constraints, or when public sector organisations lack institutional capacity for effective innovation adoption. The mechanism also fails when disconnection between innovation programmes and operational procurement creates implementation barriers that prevent realisation of development investments, undermining the primary justification for public funding.
     cbp_view_recommendations_for_uk: >
       Contracts for Innovation is an underutilised tool for pre-commercial procurement with evidenced benefits to the firms involved and scope for greater public sector impacts. To maximise its potential, its use needs to be scaled within public sector organisations, requiring promotion, best practice sharing, and potentially targets for use. Additionally, for appropriate innovative solutions, there should be a clearly supported pathway to commercialisation and public procurement.
@@ -679,6 +687,7 @@ tools:
         details: "Can target by firm size."
     economic_analysis: >
       These centres address a coordination failure related to the high capital cost and risk of accessing specialised R&D infrastructure and expertise. Individual firms, particularly SMEs, often cannot justify the enormous expense of building their own cutting-edge testing facilities or demonstration environments, which can stall the innovation process.
+
 
       Centres solve this by acting as shared, open-access infrastructure that pools resources and risk while facilitating knowledge spillovers and reducing transaction costs. However, the mechanism fails when insufficient industrial demand exists to sustain operations, when innovation challenges can be adequately served through existing market mechanisms, or when coordination costs between diverse stakeholders exceed the benefits generated through co-location. The approach also proves inappropriate when technological focus areas lack clear infrastructure requirements that justify substantial capital investment, or when basic research activities would be better suited to university environments.
     cbp_view_recommendations_for_uk: >

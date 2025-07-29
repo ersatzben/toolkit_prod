@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { parse } from 'yaml';
 import { useParams, useNavigate, useLocation, Routes, Route } from 'react-router-dom';
-import type { Tool, TagsList, Objective } from '../types/Tool';
+import type { Tool, TagsList, Objective, TermsList } from '../types/Tool';
 import { ToolDetail } from './ToolDetail';
 import { FilterInterface } from './FilterInterface';
 import {
@@ -97,10 +97,11 @@ const ToolView: React.FC<{
   tools: Tool[];
   allObjectives: Objective[];
   tagsList: TagsList | null;
+  termsList: TermsList;
   onSelectObjective: (objective: Objective) => void;
   onAddFilter: (tag: string) => void;
   onOpenMobileSidebar: () => void;
-}> = ({ tools, allObjectives, tagsList, onSelectObjective, onAddFilter, onOpenMobileSidebar }) => {
+}> = ({ tools, allObjectives, tagsList, termsList, onSelectObjective, onAddFilter, onOpenMobileSidebar }) => {
   const { tag } = useParams<{ tag: string }>();
   const tool = tools.find(t => t.tag === tag);
   
@@ -118,8 +119,9 @@ const ToolView: React.FC<{
   return (
     <ToolDetail 
       tool={tool} 
-      onSelectObjective={onSelectObjective} 
       tagsList={tagsList}
+      termsList={termsList}
+      onSelectObjective={onSelectObjective} 
       objectives={allObjectives}
       onAddFilter={onAddFilter}
       onOpenMobileSidebar={onOpenMobileSidebar}
@@ -127,11 +129,21 @@ const ToolView: React.FC<{
   );
 };
 
+interface ToolkitData {
+  tools: Tool[];
+  tagsList: TagsList;
+  objectives: Objective[];
+  termsList: TermsList;
+}
 
 export const ToolkitPage: React.FC = () => {
-  const [tools, setTools] = useState<Tool[]>([]);
-  const [allObjectives, setAllObjectives] = useState<Objective[]>([]);
-  const [tagsList, setTagsList] = useState<TagsList | null>(null);
+
+  const [toolkitData, setToolkitData] = useState<ToolkitData>({
+    tools: [],
+    tagsList: { tags: { objectives: [], innovation_stage: [], sectors: [], delivery_mechanism: [], targeting: [], timeline: [] } },
+    objectives: [],
+    termsList: {},
+  });
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [loadingError, setLoadingError] = useState<string | null>(null);
@@ -158,21 +170,25 @@ export const ToolkitPage: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [toolsResponse, tagsResponse, objectivesGroupedResponse] = await Promise.all([
+        const [toolsResponse, tagsResponse, objectivesGroupedResponse, termsResponse] = await Promise.all([
           fetch('/tools_v5.yaml'),
           fetch('/tags_list.yaml'),
           fetch('/objectives_grouped.yaml'),
+          fetch('/terms.yaml'),
         ]);
         
-        const [toolsYaml, tagsYaml, objectivesGroupedYaml] = await Promise.all([
+        const [toolsYaml, tagsYaml, objectivesGroupedYaml, termsYaml] = await Promise.all([
           toolsResponse.text(),
           tagsResponse.text(),
           objectivesGroupedResponse.text(),
+          termsResponse.text(),
         ]);
 
         const toolsData = parse(toolsYaml);
         const tagsData = parse(tagsYaml);
         const objectivesGroupedData = parse(objectivesGroupedYaml);
+        const termsData = parse(termsYaml);
+        console.log(termsData);
 
         const slugify = (str: string) =>
           str
@@ -186,15 +202,18 @@ export const ToolkitPage: React.FC = () => {
           tag: t.tag || slugify(t.name),
         }));
 
-        setTools(toolsWithTag);
-        setTagsList(tagsData);
-
-        const currentAllObjectives = objectivesGroupedData.objective_groups.reduce((acc: Objective[], group: ObjectiveGroup) => {
-          return acc.concat(group.objectives);
-        }, []);
-        setAllObjectives(currentAllObjectives);
+        setToolkitData(prev => ({
+          ...prev,
+          tools: toolsWithTag,
+          tagsList: tagsData,
+          objectives: objectivesGroupedData.objective_groups.reduce((acc: Objective[], group: ObjectiveGroup) => {
+            return acc.concat(group.objectives);
+          }, []),
+          termsList: termsData.terms,
+        }));
 
       } catch (error) {
+        console.error(error);
         setLoadingError('Failed to load toolkit data. Please refresh the page to try again.');
       }
     };
@@ -225,7 +244,7 @@ export const ToolkitPage: React.FC = () => {
     setActiveFilters([]);
   };
 
-  const filteredTools = tools
+  const filteredTools = toolkitData.tools
     .filter(tool => {
       if (activeFilters.length === 0) return true;
       const toolTags = [
@@ -298,12 +317,12 @@ export const ToolkitPage: React.FC = () => {
           <FilterChipContainer>
             {activeFilters.map(filter => (
               <FilterChip key={filter}>
-                {tagsList?.tags.objectives.find(t => t.tag === filter)?.name || 
-                 tagsList?.tags.innovation_stage.find(t => t.tag === filter)?.name || 
-                 tagsList?.tags.sectors.find(t => t.tag === filter)?.name || 
-                 tagsList?.tags.delivery_mechanism.find(t => t.tag === filter)?.name ||
-                 tagsList?.tags.targeting.find(t => t.tag === filter)?.name ||
-                 tagsList?.tags.timeline.find(t => t.tag === filter)?.name || 
+                {toolkitData.tagsList?.tags.objectives.find(t => t.tag === filter)?.name || 
+                 toolkitData.tagsList?.tags.innovation_stage.find(t => t.tag === filter)?.name || 
+                 toolkitData.tagsList?.tags.sectors.find(t => t.tag === filter)?.name || 
+                 toolkitData.tagsList?.tags.delivery_mechanism.find(t => t.tag === filter)?.name ||
+                 toolkitData.tagsList?.tags.targeting.find(t => t.tag === filter)?.name ||
+                 toolkitData.tagsList?.tags.timeline.find(t => t.tag === filter)?.name || 
                  filter}
                 <RemoveChipButton onClick={() => removeFilter(filter)}>x</RemoveChipButton>
               </FilterChip>
@@ -311,7 +330,7 @@ export const ToolkitPage: React.FC = () => {
           </FilterChipContainer>
         )}
         <FilterInterface
-          tagsList={tagsList}
+          tagsList={toolkitData.tagsList}
           activeFilters={activeFilters}
           onFilterToggle={toggleFilter}
         />
@@ -355,12 +374,12 @@ export const ToolkitPage: React.FC = () => {
             <FilterChipContainer>
               {activeFilters.map(filter => (
                 <FilterChip key={filter}>
-                  {tagsList?.tags.objectives.find(t => t.tag === filter)?.name || 
-                   tagsList?.tags.innovation_stage.find(t => t.tag === filter)?.name || 
-                   tagsList?.tags.sectors.find(t => t.tag === filter)?.name || 
-                   tagsList?.tags.delivery_mechanism.find(t => t.tag === filter)?.name ||
-                   tagsList?.tags.targeting.find(t => t.tag === filter)?.name ||
-                   tagsList?.tags.timeline.find(t => t.tag === filter)?.name || 
+                  {toolkitData.tagsList?.tags.objectives.find(t => t.tag === filter)?.name || 
+                   toolkitData.tagsList?.tags.innovation_stage.find(t => t.tag === filter)?.name || 
+                   toolkitData.tagsList?.tags.sectors.find(t => t.tag === filter)?.name || 
+                   toolkitData.tagsList?.tags.delivery_mechanism.find(t => t.tag === filter)?.name ||
+                   toolkitData.tagsList?.tags.targeting.find(t => t.tag === filter)?.name ||
+                   toolkitData.tagsList?.tags.timeline.find(t => t.tag === filter)?.name || 
                    filter}
                   <RemoveChipButton onClick={() => removeFilter(filter)}>x</RemoveChipButton>
                 </FilterChip>
@@ -368,7 +387,7 @@ export const ToolkitPage: React.FC = () => {
             </FilterChipContainer>
           )}
           <FilterInterface
-            tagsList={tagsList}
+            tagsList={toolkitData.tagsList}
             activeFilters={activeFilters}
             onFilterToggle={toggleFilter}
           />
@@ -411,9 +430,10 @@ export const ToolkitPage: React.FC = () => {
             path="/tool/:tag" 
             element={
               <ToolView 
-                tools={tools}
-                allObjectives={allObjectives}
-                tagsList={tagsList}
+                tools={toolkitData.tools}
+                allObjectives={toolkitData.objectives}
+                tagsList={toolkitData.tagsList}
+                termsList={toolkitData.termsList}
                 onSelectObjective={handleSelectObjective}
                 onAddFilter={addFilter}
                 onOpenMobileSidebar={() => setSidebarOpen(true)}
