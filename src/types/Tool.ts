@@ -51,6 +51,7 @@ export interface Tool {
       details?: string;
     };
   };
+  economic_analysis?: string;
   /** Legacy field – not present in v4 */
   recommendations?: string[];
   /** Legacy implementation block from v3 schema – not present in v4 */
@@ -98,6 +99,13 @@ export interface TagsList {
     timeline: TagItem[];
   };
 }
+
+export interface Term {
+  name: string;
+  description: string;
+}
+
+export type TermsList = Term[];
 
 export type SelectedItem = Tool | Objective | null;
 export type ItemType = 'tool' | 'objective' | null; 

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { newBrandColors } from '../../styles/theme';
+import { newBrandColors } from '../../styles/foundations/theme';
 import { IntroductionSection } from './IntroductionSection';
 import { GeneralFrameworkSection } from './GeneralFrameworkSection';
 import { PrivateRDSection } from './PrivateRDSection';
 import { PublicRDSection } from './PublicRDSection';
+import { Page } from '../Page';
 
 const ReadingContainer = styled.div`
   background: ${newBrandColors.beige};
@@ -49,6 +50,7 @@ const NavLink = styled.a`
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  scroll-behavior: smooth;
 
   &:hover {
     color: ${newBrandColors.brightGreen};
@@ -65,13 +67,14 @@ export const FurtherReadingPage: React.FC = () => {
   };
 
   return (
+    <Page title="UK R&D Policy Toolkit" subtitle="Guide to Evaluating R&D Returns">
     <ReadingContainer>
       <Container>
         <Navigation>
           <NavTitle>Contents</NavTitle>
           <NavList>
             <NavItem>
-              <NavLink href="#introduction" onClick={(e) => { e.preventDefault(); scrollToSection('introduction'); }}>
+              <NavLink href="#introduction" >
                 Introduction
               </NavLink>
             </NavItem>
@@ -99,5 +102,6 @@ export const FurtherReadingPage: React.FC = () => {
         <PublicRDSection />
       </Container>
     </ReadingContainer>
+    </Page>
   );
 }; 

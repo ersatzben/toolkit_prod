@@ -1,6 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import type { Tool, TagsList, Objective } from '../types/Tool';
+import React, { useState } from 'react';
+import type { Tool, TagsList, Objective, TermsList, Term } from '../types/Tool';
 import {
   Section,
   SectionTitle,
@@ -20,22 +19,21 @@ import {
   PageTitle,
   Tooltip,
 } from '../styles/StyledComponents';
+import { MarkdownWithTerms } from './Markdown/MarkdownRenderer';
 
 interface ToolDetailProps {
   tool: Tool;
   tagsList: TagsList;
   objectives: Objective[];
+  termsList: TermsList;
   onSelectObjective: (objective: Objective) => void;
   onAddFilter: (tag: string) => void;
+  onOpenMobileSidebar: () => void;
 }
 
-// Helper to ensure we always pass a string to ReactMarkdown, preventing runtime errors if the
-// source value is accidentally an object/array.
-const SafeMarkdown: React.FC<{ value?: unknown }> = ({ value }) => (
-  <ReactMarkdown>{typeof value === 'string' ? value : String(value ?? '')}</ReactMarkdown>
-);
+export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, termsList, onAddFilter, onOpenMobileSidebar }) => {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
 
-export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectives, onSelectObjective, onAddFilter }) => {
   const getTagName = (category: keyof TagsList['tags'], tag: string) => {
     const foundTag = tagsList.tags[category].find(t => t.tag === tag);
     return foundTag ? foundTag.name : tag;
@@ -45,13 +43,27 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
     return objectives.find(o => o.tag === tag);
   };
 
+  const handleFilterClick = (tag: string) => {
+    onAddFilter(tag);
+    // Open mobile sidebar when filter is clicked on mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      onOpenMobileSidebar();
+    }
+  };
+
+  const handleTooltipClick = (tagString: string) => {
+    // Toggle tooltip on mobile
+    setActiveTooltip(activeTooltip === tagString ? null : tagString);
+  };
+
   const renderList = (items?: string[]) => {
     if (!items || items.length === 0) return <p>N/A</p>;
     return (
       <ul>
         {items.map((item, idx) => (
           <li key={idx}>
-            <SafeMarkdown value={item} />
+            <MarkdownWithTerms markdown={item} termsList={termsList} />
           </li>
         ))}
       </ul>
@@ -70,7 +82,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
         <Section>
           <SectionTitle itemType="tool">Overall Assessment</SectionTitle>
           <MarkdownText variant="large">
-            <SafeMarkdown value={tool.overall_assessment} />
+            <MarkdownWithTerms markdown={tool.overall_assessment} termsList={termsList} />
           </MarkdownText>
         </Section>
       )}
@@ -83,7 +95,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Description</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={tool.how_it_works.description} />
+                <MarkdownWithTerms markdown={tool.how_it_works.description} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -91,7 +103,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Mechanism</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={tool.how_it_works.mechanism} />
+                <MarkdownWithTerms markdown={tool.how_it_works.mechanism} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -99,7 +111,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Complexity</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={`**${tool.how_it_works.complexity || ''}** – ${tool.how_it_works.complexity_details || ''}`} />
+                <MarkdownWithTerms markdown={`**${tool.how_it_works.complexity || ''}** – ${tool.how_it_works.complexity_details || ''}`} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -107,7 +119,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Flexibility</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={`**${tool.how_it_works.flexibility || ''}** – ${tool.how_it_works.flexibility_details || ''}`} />
+                <MarkdownWithTerms markdown={`**${tool.how_it_works.flexibility || ''}** – ${tool.how_it_works.flexibility_details || ''}`} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -122,7 +134,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Evidence Summary</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={tool.effectiveness_and_uk_impact.evidence_summary} />
+                  <MarkdownWithTerms markdown={tool.effectiveness_and_uk_impact.evidence_summary} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -138,7 +150,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection>
               <SubSectionTitle itemType="tool">Time to Impact</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={tool.effectiveness_and_uk_impact.time_to_impact} />
+                <MarkdownWithTerms markdown={tool.effectiveness_and_uk_impact.time_to_impact} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
@@ -154,7 +166,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               <SubSectionTitle itemType="tool">Sectoral</SubSectionTitle>
               {tool.targetability.sectoral ? (
                 <MarkdownText>
-                  <SafeMarkdown value={`**${tool.targetability.sectoral.level || ''}** – ${tool.targetability.sectoral.details || ''}`} />
+                  <MarkdownWithTerms markdown={`**${tool.targetability.sectoral.level || ''}** – ${tool.targetability.sectoral.details || ''}`} termsList={termsList} />
                 </MarkdownText>
               ) : (
                 <p>N/A</p>
@@ -164,7 +176,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               <SubSectionTitle itemType="tool">Technological</SubSectionTitle>
               {tool.targetability.technological ? (
                 <MarkdownText>
-                  <SafeMarkdown value={`**${tool.targetability.technological.level || ''}** – ${tool.targetability.technological.details || ''}`} />
+                  <MarkdownWithTerms markdown={`**${tool.targetability.technological.level || ''}** – ${tool.targetability.technological.details || ''}`} termsList={termsList} />
                 </MarkdownText>
               ) : (
                 <p>N/A</p>
@@ -174,7 +186,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               <SubSectionTitle itemType="tool">Regional</SubSectionTitle>
               {tool.targetability.regional ? (
                 <MarkdownText>
-                  <SafeMarkdown value={`**${tool.targetability.regional.level || ''}** – ${tool.targetability.regional.details || ''}`} />
+                  <MarkdownWithTerms markdown={`**${tool.targetability.regional.level || ''}** – ${tool.targetability.regional.details || ''}`} termsList={termsList} />
                 </MarkdownText>
               ) : (
                 <p>N/A</p>
@@ -184,7 +196,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               <SubSectionTitle itemType="tool">By Firm Type</SubSectionTitle>
               {tool.targetability.by_firm_type ? (
                 <MarkdownText>
-                  <SafeMarkdown value={`**${tool.targetability.by_firm_type.level || ''}** – ${tool.targetability.by_firm_type.details || ''}`} />
+                  <MarkdownWithTerms markdown={`**${tool.targetability.by_firm_type.level || ''}** – ${tool.targetability.by_firm_type.details || ''}`} termsList={termsList} />
                 </MarkdownText>
               ) : (
                 <p>N/A</p>
@@ -195,10 +207,19 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             <SubSection style={{ marginTop: '20px' }}>
               <SubSectionTitle itemType="tool">Targetability Assessment</SubSectionTitle>
               <MarkdownText>
-                <SafeMarkdown value={tool.targetability.overall_assessment} />
+                <MarkdownWithTerms markdown={tool.targetability.overall_assessment} termsList={termsList} />
               </MarkdownText>
             </SubSection>
           )}
+        </Section>
+      )}
+
+      {tool.economic_analysis && (
+        <Section>
+          <SectionTitle itemType="tool">Economic Analysis</SectionTitle>
+          <MarkdownText>
+            <MarkdownWithTerms markdown={tool.economic_analysis} termsList={termsList} />
+          </MarkdownText>
         </Section>
       )}
 
@@ -207,7 +228,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
         <Section>
           <SectionTitle itemType="tool">Recommendations for the UK (Centre for British Progress view)</SectionTitle>
           <MarkdownText>
-            <SafeMarkdown value={tool.cbp_view_recommendations_for_uk} />
+            <MarkdownWithTerms markdown={tool.cbp_view_recommendations_for_uk} termsList={termsList} />
           </MarkdownText>
         </Section>
       )}
@@ -243,13 +264,19 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
               const objective = getObjectiveByTag(tagString);
               const tagName = getTagName('objectives', tagString);
               return (
-                <Tooltip key={index}>
+                <Tooltip key={index} className={activeTooltip === tagString ? 'mobile-active' : ''}>
                   <Tag
                     itemType="tool"
+                    onClick={() => handleTooltipClick(tagString)}
+                    style={{ cursor: 'pointer' }}
                   >
                     {tagName}
                   </Tag>
-                  {objective && <span className="tooltiptext">{objective.description}</span>}
+                  {objective && (
+                    <span className="tooltiptext">
+                      {objective.description}
+                    </span>
+                  )}
                 </Tooltip>
               );
             })}
@@ -265,7 +292,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.innovation_stage || []).map((tag, index) => {
               const tagName = getTagName('innovation_stage', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -278,7 +305,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.sectors || []).map((tag, index) => {
               const tagName = getTagName('sectors', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -291,7 +318,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.targeting || []).map((tag, index) => {
               const tagName = getTagName('targeting', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
@@ -304,7 +331,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
             {(tool.tags.timeline || []).map((tag, index) => {
               const tagName = getTagName('timeline', tag);
               return (
-                <Tag key={index} itemType="tool" variant="filter" onClick={() => onAddFilter(tag)}>
+                <Tag key={index} itemType="tool" variant="filter" onClick={() => handleFilterClick(tag)}>
                   {tagName}
                 </Tag>
               );
