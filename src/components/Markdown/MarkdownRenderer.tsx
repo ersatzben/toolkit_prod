@@ -84,17 +84,6 @@ const TermModal: React.FC<{
 // Term component for proper tooltip handling
 const TermComponent: React.FC<{ name: string; description: string }> = ({ name, description }) => {
     const [showModal, setShowModal] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-
-    React.useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768 || 'ontouchstart' in window);
-        };
-
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     const handleClick = (e: React.MouseEvent) => {
         e.preventDefault();

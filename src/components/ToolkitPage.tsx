@@ -142,7 +142,7 @@ export const ToolkitPage: React.FC = () => {
     tools: [],
     tagsList: { tags: { objectives: [], innovation_stage: [], sectors: [], delivery_mechanism: [], targeting: [], timeline: [] } },
     objectives: [],
-    termsList: {},
+    termsList: [],
   });
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
