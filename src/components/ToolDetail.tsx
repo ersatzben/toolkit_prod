@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Tool, TagsList, Objective, TermsList, Term } from '../types/Tool';
+import type { Tool, TagsList, Objective, TermsList } from '../types/Tool';
 import {
   Section,
   SectionTitle,
