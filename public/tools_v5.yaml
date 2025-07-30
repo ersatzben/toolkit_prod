@@ -286,12 +286,16 @@ tools:
     further_reading:
       - title: "Regulatory Sandboxes and Fintech Funding: Evidence from the UK"
         url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3727816"
+        author: "Cornelli et al., 2023"
       - title: "The Sandbox Paradox: Balancing the Need to Facilitate Innovation with the Risk of Regulatory Privilege"
         url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561860"
+        author: "Knight & Mitchell, 2021"
       - title: "Regulatory sandboxes: Do they speed up innovation in energy? - ScienceDirect"
         url: "https://www.sciencedirect.com/science/article/pii/S0301421523002410"
+        author: "Beckstedde et al., 2023"
       - title: "Regulatory sandboxes in artificial intelligence"
         url: "https://www.oecd.org/en/publications/regulatory-sandboxes-in-artificial-intelligence_8f80a0e6-en.html"
+        author: "OECD, 2023"
     tags:
       objectives:
         - support_adoption_new_technologies
@@ -360,18 +364,24 @@ tools:
     cbp_view_recommendations_for_uk: >
       Innovation loans are likely to be most effective for supporting SMEs, manufacturing firms, and technologies around TRL 6-8 to cover finance gaps for scaling, regulatory validation, and reaching the market. Effectiveness can be improved by not linking repayment to turnover and by avoiding permissive forgiveness terms. For SMEs, grants may complement loans to help crowd-in additional private R&D investment.
     further_reading:
-      - title: "Evaluation of innovation loans: follow-on interim report – UKRI"
+      - title: "Evaluation of innovation loans: follow-on interim report"
         url: "https://www.ukri.org/publications/evaluation-of-innovation-loans-follow-on-interim-report/"
+        author: "UKRI"
       - title: "Are R&D Loans Relevant for Supporting Industrial R&D: The Case of TTGV in Turkey"
         url: "https://dergipark.org.tr/tr/download/article-file/2175942"
+        author: "Bürken, S., 2022"
       - title: "Publicly-Funded R&D Programs and Survival of Patents"
         url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1762027"
+        author: "Svensson, R., 2010"
       - title: "Commercialization of Patents and External Financing During the R&D-Phase"
         url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1017781"
+        author: "Svensson, R., 2007"
       - title: "Impact of low-interest credits on business RD expenditures: Spanish firms and CDTI loans for RD projects"
         url: "https://mpra.ub.uni-muenchen.de/44221/2/MPRA_paper_44221.pdf"
-      - title: "Subsidies or loans? Evaluating the impact of R&D support programmes - ScienceDirect"
+        author: "Huergo et al., 2013"
+      - title: "Subsidies or loans? Evaluating the impact of R&D support programmes"
         url: "https://www.sciencedirect.com/science/article/abs/pii/S0048733317300811"
+        author: "Huergo & Moreno, 2017"
     tags:
       objectives:
         - support_sme_innovation
@@ -447,14 +457,18 @@ tools:
     cbp_view_recommendations_for_uk: >
       Collaborative R&D is a powerful tool for de-risking innovation, capitalising on the UK's excellent research base, and increasing progress towards commercialisation across all TRLs. The UK should continue to foster a diversity of collaborative R&D grant types, with the majority targeted towards sectors and technologies to drive UK comparative advantage and increase growth and security. Administration of targeted grants should be through expert leaders with sufficient levels of autonomy. Greater connections to policymakers to highlight current and future challenges from industry could accelerate market readiness and adoption. There is clear demand for responsive, non-targeted collaborative R&D grants and CBP encourages Innovate UK to act swiftly to fill the strategic gap left by the termination of Smart Grants.
     further_reading:
-      - title: "Assessing the business performance effects of receiving publicly-funded science, research and innovation grants, Vanino et al, ERC, 2017"
+      - title: "Assessing the business performance effects of receiving publicly-funded science, research and innovation grants"
         url: "https://www.enterpriseresearch.ac.uk/wp-content/uploads/2017/10/ERC-ResPap61-VaninoRoperBecker-revised-V3.3.pdf"
-      - title: "Innovate UK Grants and R&D Returns: Impact on Business and Economy, Dinos & Vorley, Innovation Caucus, 2023"
+        author: "Vanino et al, ERC, 2017"
+      - title: "Innovate UK Grants and R&D Returns: Impact on Business and Economy"
         url: "https://innovationcaucus.co.uk/app/uploads/2023/11/Innovate-UK-Grants-and-RD-Returns-Impact-on-Business-and-Economy_FINAL.pdf"
-      - title: "The Contribution of Innovate UK to UK Firm Growth and Performance: 1.An Analysis of Innovate UK Applicants for Funding, Cowling et al, Innovation and Research Caucus, 2025"
+        author: "Dinos & Vorley, Innovation Caucus, 2023"
+      - title: "The Contribution of Innovate UK to UK Firm Growth and Performance: 1.An Analysis of Innovate UK Applicants for Funding"
         url: "https://innovation-research-caucus-uploads.s3.amazonaws.com/production/uploads/2025/01/The-Contribution-of-IUK-to-UK-Firm-Growth-and-Performance.report-Jan-2025-FINAL-v4.pdf"
-      - title: "Interim Impact Evaluation of the Industrial Strategy Challenge Fund, Zakaria et al, Rand 2024"
+        author: "Cowling et al, Innovation and Research Caucus, 2025"
+      - title: "Interim Impact Evaluation of the Industrial Strategy Challenge Fund"
         url: "https://www.ukri.org/wp-content/uploads/2024/09/IUK-270924-ISCF-interim-impact-report_FINAL.pdf"
+        author: "Zakaria et al, Rand 2024"
     tags:
       objectives:
         - support_collaborative_rd
