@@ -10,16 +10,13 @@ import {
   TargetabilityGrid,
   TargetabilityBox,
   MarkdownText,
-  FurtherReadingList,
-  FurtherReadingListItem,
-  FurtherReadingLink,
-  FurtherReadingText,
   TitleContainer,
   ItemTypeIndicator,
   PageTitle,
   Tooltip,
 } from '../styles/StyledComponents';
 import { MarkdownWithTerms } from './Markdown/MarkdownRenderer';
+import { ReferenceCard } from './ReferenceCard';
 
 interface ToolDetailProps {
   tool: Tool;
@@ -237,21 +234,14 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
       {tool.further_reading && tool.further_reading.length > 0 && (
         <Section>
           <SectionTitle itemType="tool">Further Reading</SectionTitle>
-          <FurtherReadingList>
-            {tool.further_reading.map((item, index) => (
-              <FurtherReadingListItem key={index}>
-                {item.url ? (
-                  <FurtherReadingLink href={item.url} target="_blank" rel="noopener noreferrer">
-                    {item.title} {item.author ? `(${item.author})` : ''}
-                  </FurtherReadingLink>
-                ) : (
-                  <FurtherReadingText>
-                    {item.title} {item.author ? `(${item.author})` : ''}
-                  </FurtherReadingText>
-                )}
-              </FurtherReadingListItem>
-            ))}
-          </FurtherReadingList>
+          {tool.further_reading.map((item, index) => (
+            <ReferenceCard key={index} reference={{
+              authors: item.author || '',
+              title: item.title,
+              url: item.url
+            }} />
+          ))}
+          
         </Section>
       )}
 
@@ -284,7 +274,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
         </Section>
       )}
 
-      {/* Filter Tags Section (unchanged) */}
+      {/* Filter Tags Section */}
       <Section variant="filter">
         <SubSection variant="filter">
           <SubSectionTitle itemType="tool" variant="filter">Innovation Stage</SubSectionTitle>
