@@ -47,7 +47,7 @@ tools:
       This tool is designed to correct two fundamental market failures in innovation. The first is the *appropriability problem*, where firms cannot capture the full financial value of their own R&D because the knowledge created inevitably *spills over* to benefit competitors and the wider economy, leading to underinvestment. The second is information asymmetry, which recognises that firms have superior knowledge about their own technological and commercial opportunities compared to the government.
 
 
-      By reducing the effective cost of R&D, tax reliefs directly address the appropriability problem by allowing firms to keep a larger share of the returns from their investment. This mechanism respects information asymmetry by amplifying existing market signals and relying on firms' own judgement, rather than having the government attempt to pick specific winners. However, this market-led approach creates inherent limitations when strategic coordination is required or when significant positive externalities concentrate in areas with limited commercial incentives – such as basic research, infrastructure development, or technologies addressing climate change – which require more targeted intervention mechanisms capable of directing resources toward socially optimal outcomes regardless of immediate commercial viability.
+      By reducing the effective cost of R&D, tax reliefs directly address the appropriability problem by allowing firms to keep a larger share of the returns from their investment. This mechanism respects information asymmetry by amplifying existing market signals and relying on firms' own judgement, rather than having the government attempt to pick specific companies' R&D activities to support. However, this market-led approach creates inherent limitations when strategic coordination is required or when significant positive externalities concentrate in areas with limited commercial incentives – such as basic research, infrastructure development, or technologies addressing climate change – which require more targeted intervention mechanisms capable of directing resources toward socially optimal outcomes regardless of immediate commercial viability.
     cbp_view_recommendations_for_uk: >
       R&D tax reliefs are a core part of UK innovation policy and should be maintained for broad-based stimulus. With over two-thirds of UK government support to business R&D coming from these reliefs, a case could be made to restructure them or repurpose some of the budget for more targeted outcomes. However, they are poorly suited to incentivise the strategic direction of technological capabilities or regional rebalancing. A drastic reduction of the relief would be unhelpfully destabilising to our business community who have recently had to get to grips with changes and have been crying out for policy stability.
     further_reading:
@@ -127,7 +127,19 @@ tools:
       Based on contest theory, prizes incentivise multiple teams to invest their own resources in a competition for a final reward. This eliminates the *moral hazard* (where an actor takes on more risk because another bears the cost) that can be present in grants, as the government only pays for a successful outcome. However, this competitive approach creates a risk of socially inefficient duplication of research effort, which requires careful prize design to manage.
     cbp_view_recommendations_for_uk: >
       Innovation inducement prizes are most suitable when the goal is known but the optimal technological path and innovator are unknown. This is likely to be common around TRL 3. Prizes are powerful for drawing in non-traditional innovators, but this effect is likely to be greater when upfront R&D costs are relatively low, and the technical problem is currently of low salience, making publicity more likely to attract new innovators.
-    further_reading: []
+    further_reading:
+      - title: "Inventing Prizes: A Historical Perspective on Innovation Awards and Technology Policy"
+        url: "https://www.cambridge.org/core/journals/business-history-review/article/inventing-prizes-a-historical-perspective-on-innovation-awards-and-technology-policy/9FAAB2D234C5C9CFB72E9C0642C60772"
+        author: "Khan, BZ., 2015"
+      - title: "The Impact of Innovation Inducement Prizes"
+        url: "https://media.nesta.org.uk/documents/impact_of_innovation_inducement_prizes.pdf"
+        author: "NESTA"
+      - title: "Challenge Prizes Landscape Review"
+        url: "https://media.nesta.org.uk/documents/challenge_prizes_landscape_review.pdf"
+        author: "NESTA"
+      - title: "Review of Innovation Prizes"
+        url: "https://innovationcaucus.co.uk/app/uploads/2023/11/IC-Prizes-Report_Graves_Final_v3.pdf"
+        author: "Graves & Vorley, Innovation Caucus"
     tags:
       objectives:
         - solve_government_challenges
@@ -188,13 +200,16 @@ tools:
         level: "Low"
         details: "Larger firms are typically better positioned to deliver at the scale required by government commitments."
     economic_analysis: >
-      This tool is an extension of the government's procurement strategy to address demand-side market failures, creating guaranteed markets for innovations that meet specific public sector requirements. The mechanism proves most effective when agencies possess clear operational needs for particular technologies but existing commercial solutions prove inadequate, even when underlying technical feasibility appears established.
+      This tool is an extension of a government's procurement strategy to address demand-side market failures, creating guaranteed markets for innovations that meet specific public sector requirements. The mechanism proves most effective when agencies possess clear operational needs for particular technologies but existing commercial solutions prove inadequate, even when underlying technical feasibility appears established.
 
 
       By establishing credible, legally binding commitments to purchase products meeting detailed technical specifications, AMCs transform government procurement requirements into innovation incentives. This guaranteed demand enables private actors to justify the substantial fixed costs required for commercialisation, helping viable innovations cross the "valley of death" between prototype development and large-scale market deployment. While the primary justification centres on securing government access to needed technologies, the mechanism generates secondary benefits by creating pathways for broader commercial application of innovations that might otherwise remain underdeveloped.
     cbp_view_recommendations_for_uk: >
       Economic theory suggests AMCs are best suited to products characterized by high demand uncertainty, high upfront production costs and few prospective buyers. AMCs are likely to be most effective where the ideal innovator and producer are unknown, and the social benefits of the product show "network effects", where a greater volume of production increases the social benefit derived from each unit. Finally, AMCs are best suited to TRLs 3-5, where social value can be estimated and a "target product profile" can be clearly defined with low risk of industry capture.
-    further_reading: []
+    further_reading: 
+      - title: "How to start an advance market commitment"
+        url: "https://worksinprogress.co/issue/how-to-start-an-advance-market-commitment/"
+        author: "Nan Ransohoff, 2024"
     tags:
       objectives:
         - create_markets_for_innovation
