@@ -74,6 +74,18 @@ const Copyright = styled.div`
   border-top: 1px solid ${newBrandColors.beige}20;
   padding-top: 1rem;
   width: 100%;
+  
+  a {
+    color: ${newBrandColors.beige};
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const Footer: React.FC = () => {
@@ -97,7 +109,8 @@ export const Footer: React.FC = () => {
         </FooterLinks>
         
         <Copyright>
-          © {currentYear} Centre for British Progress. All rights reserved.
+          © {currentYear} Centre for British Progress. All rights reserved.<br />
+          Content by Helen Ewles, Sanjush Dalmia, Pedro Serôdio and Ben Johnson for <a href="https://britishprogress.org" target="_blank" rel="noopener noreferrer">Centre for British Progress</a>
         </Copyright>
       </FooterContent>
     </FooterContainer>
