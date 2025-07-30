@@ -23,64 +23,7 @@ export const Container = styled.div`
   }
 `;
 
-// Framework section
-export const FrameworkSection = styled.div`
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  border: 1px solid ${newBrandColors.lightBlue}30;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  
-  ${media.tablet} {
-    padding: 1.5rem;
-  }
-  
-  ${media.mobile} {
-    padding: 1rem;
-  }
-`;
-
-export const FrameworkTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: ${newBrandColors.charcoal};
-  text-align: center;
-  
-  ${media.tablet} {
-    font-size: 1.5rem;
-  }
-`;
-
-export const FrameworkContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  
-  ${media.tablet} {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-`;
-
-export const FrameworkSubsection = styled.div`
-  margin-bottom: 1.5rem;
-`;
-
-export const FrameworkSubtitle = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: ${newBrandColors.charcoal};
-`;
-
-export const FrameworkText = styled.p`
-  color: ${newBrandColors.charcoal};
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-`;
+// Framework content moved to use common Section component
 
 export const FrameworkList = styled.ul`
   list-style: none;

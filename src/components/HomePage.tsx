@@ -8,7 +8,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
   padding: 2rem;
   box-sizing: border-box;
@@ -22,21 +22,38 @@ const PageContainer = styled.div`
   }
 `;
 
+const HomePageWrapper = styled.div`
+  background: linear-gradient(135deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
+  min-height: 100vh;
+`;
+
 const WelcomeSection = styled.div`
-  text-align: center;
+  width: 100%;
+  max-width: 1000px;
   margin-bottom: 3rem;
   color: ${newBrandColors.beige};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const MainTitle = styled.h1`
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin: 0 0 2rem 0;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   color: ${newBrandColors.beige};
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    align-self: center;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
@@ -48,9 +65,48 @@ const Subtitle = styled.p`
   font-size: 1.3rem;
   opacity: 0.9;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 0 2rem 0;
   line-height: 1.6;
   color: ${newBrandColors.beige};
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const LogoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+`;
+
+const Logo = styled.img`
+  height: 60px;
+  width: auto;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    height: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    height: 40px;
+  }
+`;
+
+const LogoText = styled.p`
+  font-size: 0.9rem;
+  color: ${newBrandColors.beige};
+  opacity: 0.8;
+  margin: 0;
+  font-weight: 400;
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const OptionsContainer = styled.div`
@@ -58,11 +114,12 @@ const OptionsContainer = styled.div`
   gap: 2rem;
   max-width: 1000px;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
 
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1.5rem;
+    justify-content: center;
   }
 `;
 
@@ -114,43 +171,50 @@ const OptionDescription = styled.p`
 export const HomePage: React.FC = () => {
   return (
     <Page showBannerOnMobile={true}>
-      <PageContainer>
-        <WelcomeSection>
-          <MainTitle>UK R&D Policy Toolkit</MainTitle>
-          <Subtitle>
-            Explore comprehensive resources for research and development policy, 
-            from practical tools to investment analysis and evidence-based insights.
-          </Subtitle>
-        </WelcomeSection>
-        
-        <OptionsContainer>
-          <OptionCard to="/toolkit">
-            <OptionIcon>🔧</OptionIcon>
-            <OptionTitle>Learn about R&D policy tools</OptionTitle>
-            <OptionDescription>
-              <strong>For policymakers:</strong> Discover and explore various policy instruments designed to support 
-              R&D initiatives across different sectors and stages.
-            </OptionDescription>
-          </OptionCard>
+      <HomePageWrapper>
+        <PageContainer>
+          <WelcomeSection>
+            <MainTitle>UK R&D Policy Toolkit</MainTitle>
+            <Subtitle>
+              Explore comprehensive resources for research and development policy, 
+              from practical tools to investment analysis and evidence-based insights.
+            </Subtitle>
+            
+            <LogoSection>
+              <LogoText>Powered by the</LogoText>
+              <Logo src="/logo_transp.png" alt="Centre for British Progress" />
+            </LogoSection>
+          </WelcomeSection>
           
-          <OptionCard to="/reading">
-            <OptionIcon>📚</OptionIcon>
-            <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
-            <OptionDescription>
-              <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
-            </OptionDescription>
-          </OptionCard>
+          <OptionsContainer>
+            <OptionCard to="/toolkit">
+              <OptionIcon>🔧</OptionIcon>
+              <OptionTitle>Learn about R&D policy tools</OptionTitle>
+              <OptionDescription>
+                <strong>For policymakers:</strong> Discover and explore various policy instruments designed to support 
+                R&D initiatives across different sectors and stages.
+              </OptionDescription>
+            </OptionCard>
+            
+            <OptionCard to="/reading">
+              <OptionIcon>📚</OptionIcon>
+              <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
+              <OptionDescription>
+                <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
+              </OptionDescription>
+            </OptionCard>
 
-          <OptionCard to="/calculator">
-            <OptionIcon>📊</OptionIcon>
-            <OptionTitle>Calculate return on investment from R&D</OptionTitle>
-            <OptionDescription>
-              <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
-              and impact of R&D investments.
-            </OptionDescription>
-          </OptionCard>
-        </OptionsContainer>     
-      </PageContainer>
+            <OptionCard to="/calculator">
+              <OptionIcon>📊</OptionIcon>
+              <OptionTitle>Calculate return on investment from R&D</OptionTitle>
+              <OptionDescription>
+                <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
+                and impact of R&D investments.
+              </OptionDescription>
+            </OptionCard>
+          </OptionsContainer>     
+        </PageContainer>
+      </HomePageWrapper>
     </Page>
   );
 }; 

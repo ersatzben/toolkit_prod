@@ -4,7 +4,9 @@ import { Page } from '../Page';
 import { ReferenceCard, type Reference } from '../ReferenceCard';
 import {
   Container,
-  Section
+  MainContent,
+  Section,
+  TitleContainer
 } from '../../styles/StyledComponents';
 import {
   PageTitle,
@@ -13,14 +15,8 @@ import {
   Paragraph,
   TextEmphasis
 } from '../../styles/components/Typography';
-import styled from 'styled-components';
 import { newBrandColors } from '../../styles/foundations/theme';
 
-const ReadingContainer = styled.div`
-  background: ${newBrandColors.beige};
-  min-height: 100vh;
-  width: 100%;
-`;
 
 export const FurtherReadingPage: React.FC = () => {
   const [references, setReferences] = useState<Reference[]>([]);
@@ -49,11 +45,12 @@ export const FurtherReadingPage: React.FC = () => {
 
   return (
     <Page title="UK R&D Policy Toolkit" subtitle="Guide to Evaluating R&D Returns">
-      <ReadingContainer>
-        <Container>
+      <MainContent>
+        <TitleContainer>
           <PageTitle>Returns to R&D: Private and Public Perspectives</PageTitle>
-
-          <Section style={{ background: 'white', borderRadius: '12px', padding: '1.5rem', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
+        </TitleContainer>
+        <Container>
+          <Section>
             <SubSectionTitle style={{ marginBottom: '1rem' }}>Contents</SubSectionTitle>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '0.5rem' }}>
@@ -381,7 +378,7 @@ export const FurtherReadingPage: React.FC = () => {
             ))}
           </Section>
         </Container>
-      </ReadingContainer>
+      </MainContent>
     </Page>
   );
 };

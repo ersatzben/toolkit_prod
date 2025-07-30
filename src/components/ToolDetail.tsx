@@ -222,7 +222,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, tagsList, objectiv
 
       {/* CBP View */}
       {tool.cbp_view_recommendations_for_uk && (
-        <Section>
+        <Section color="blue">
           <SectionTitle itemType="tool">Recommendations for the UK (Centre for British Progress view)</SectionTitle>
           <MarkdownText>
             <MarkdownWithTerms markdown={tool.cbp_view_recommendations_for_uk} termsList={termsList} />

@@ -28,9 +28,7 @@ import {
   FilterChip,
   RemoveChipButton,
   ClearFiltersButton,
-  PageTitle,
-  Section,
-  MarkdownText,
+  Section
 } from '../styles/StyledComponents';
 import { media } from '../styles/foundations/breakpoints';
 import { Page } from './Page';
