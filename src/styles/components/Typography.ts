@@ -132,8 +132,8 @@ export const HeaderSubtitle = styled.h2`
 `;
 
 // Paragraph and text components
-export const Paragraph = styled.p<{ variant?: 'large' }>`
-  margin-bottom: 1.2em;
+export const Paragraph = styled.p<{ variant?: 'large' | 'compact' }>`
+  margin-bottom: ${props => props.variant === 'compact' ? '0.8em' : '1.2em'};
   line-height: ${props => props.variant === 'large' ? typography.lineHeight.loose : typography.lineHeight.relaxed};
   color: ${newBrandColors.charcoal};
   opacity: 0.9;

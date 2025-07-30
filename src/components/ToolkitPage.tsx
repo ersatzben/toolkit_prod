@@ -28,9 +28,7 @@ import {
   FilterChip,
   RemoveChipButton,
   ClearFiltersButton,
-  PageTitle,
-  Section,
-  MarkdownText,
+  Section
 } from '../styles/StyledComponents';
 import { media } from '../styles/foundations/breakpoints';
 import { Page } from './Page';
@@ -63,35 +61,6 @@ const SplashMessage = () => (
   </Section>
 );
 
-const UserGuide: React.FC = () => (
-  <Section>
-    <PageTitle>How to use this toolkit</PageTitle>
-    <MarkdownText>
-      <p>
-        This toolkit provides comprehensive analysis of innovation policy instruments 
-        to help policymakers make evidence-based decisions about R&D investment and innovation support.
-      </p>
-      
-      <h2>Getting Started</h2>
-      <p>
-        Browse the policy tools using the sidebar filters, or use the R&D calculator 
-        to estimate returns on research investment.
-      </p>
-      
-      <h2>Understanding the Analysis</h2>
-      <p>
-        Each tool includes effectiveness analysis, implementation guidance, and 
-        recommendations based on international evidence and UK-specific context.
-      </p>
-      
-      <h2>Using the Calculator</h2>
-      <p>
-        The R&D investment calculator uses the perpetual inventory method to 
-        estimate benefit-cost ratios for both private and public R&D spending.
-      </p>
-    </MarkdownText>
-  </Section>
-);
 
 const ToolView: React.FC<{
   tools: Tool[];
@@ -425,7 +394,6 @@ export const ToolkitPage: React.FC = () => {
         )}
         <Routes>
           <Route path="/" element={<SplashMessage />} />
-          <Route path="/guide" element={<UserGuide />} />
           <Route 
             path="/tool/:tag" 
             element={

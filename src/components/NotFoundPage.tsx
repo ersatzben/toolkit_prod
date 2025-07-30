@@ -135,9 +135,9 @@ export const NotFoundPage: React.FC = () => {
                 Popular destinations:
               </strong>
               <ul style={{ margin: 0, paddingLeft: '1.5rem', textAlign: 'left' }}>
-                <li>Browse policy tools and their effectiveness</li>
+                <li>Learn about R&D policy tools and their effectiveness</li>
+                <li>Read our guide to evaluating R&D returns</li>
                 <li>Use the R&D investment calculator</li>
-                <li>Read research and case studies</li>
               </ul>
             </Section>
             
@@ -146,7 +146,10 @@ export const NotFoundPage: React.FC = () => {
                 🏠 Back to Home
               </StyledButton>
               <StyledButton to="/toolkit" $variant="secondary">
-                🔧 Browse Toolkit
+                🔧 Learn about R&D
+              </StyledButton>
+              <StyledButton to="/reading" $variant="secondary">
+                📚 Guide to evaluating
               </StyledButton>
               <StyledButton to="/calculator" $variant="secondary">
                 🧮 Calculator

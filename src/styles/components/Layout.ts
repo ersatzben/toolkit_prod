@@ -142,18 +142,34 @@ export const MainContent = styled.main`
 `;
 
 // Section containers
-export const Section = styled.section<{ variant?: 'filter' }>`
+export const Section = styled.section<{ variant?: 'filter'; color?: 'red' | 'blue' | 'green' }>`
   margin-bottom: ${props => props.variant === 'filter' ? spacing.lg.desktop : spacing['2xl'].desktop};
   border: 1px solid ${props => props.variant === 'filter' ? newBrandColors.lightBlue + '40' : newBrandColors.lightBlue + '50'};
   border-radius: ${props => props.variant === 'filter' ? '8px' : '12px'};
   padding: ${props => props.variant === 'filter' ? spacing.md.desktop : spacing.xl.desktop};
   box-shadow: ${props => props.variant === 'filter' ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.05)'};
-  background-color: ${props => props.variant === 'filter' ? newBrandColors.beige + '80' : '#ffffff'};
+  background-color: ${props => 
+    props.variant === 'filter' ? newBrandColors.beige + '80' :
+    props.color === 'red' ? newBrandColors.deepRed + '20' :
+    props.color === 'blue' ? newBrandColors.lightBlue + '50' :
+    props.color === 'green' ? newBrandColors.brightGreen + '20' :
+    '#ffffff'};
+  
+  border-left: ${props =>
+    props.color === 'red' ? `10px solid ${newBrandColors.deepRed}` :
+    props.color === 'blue' ? `10px solid ${newBrandColors.darkBlue}` :
+    props.color === 'green' ? `10px solid ${newBrandColors.darkGreen}` :
+    'none'};
   transition: all 0.2s ease;
 
   &:hover {
     box-shadow: ${props => props.variant === 'filter' ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.08)'};
-    border-color: ${props => props.variant === 'filter' ? newBrandColors.lightBlue + '60' : newBrandColors.lightBlue + '70'};
+    border-color: ${props => props.variant === 'filter' ? 
+      newBrandColors.lightBlue + '60' : 
+      props.color === 'red' ? newBrandColors.lightRed :
+      props.color === 'blue' ? newBrandColors.lightBlue :
+      props.color === 'green' ? newBrandColors.brightGreen:
+      newBrandColors.lightBlue + '70'};
   }
 
   ${media.tablet} {

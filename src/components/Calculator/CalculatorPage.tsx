@@ -5,11 +5,6 @@ import { FormulaDisplay } from '../Reading/FormulaDisplay';
 import {
   CalculatorContainer,
   Container,
-  FrameworkSection,
-  FrameworkTitle,
-  FrameworkSubsection,
-  FrameworkSubtitle,
-  FrameworkText,
   MainCard,
   Tabs,
   Tab,
@@ -48,6 +43,7 @@ import {
   FrameworkTabContent,
   InterpretationSection
 } from '../../styles/components/Calculator';
+import { Section, SubSectionTitle, Paragraph } from '../../styles/StyledComponents';
 
 type TabType = 'private' | 'public';
 type PresetType = 'conservative' | 'moderate' | 'optimistic' | 'lucking';
@@ -273,30 +269,30 @@ export const CalculatorPage: React.FC = () => {
     >
       <CalculatorContainer>
         <Container>
-          <FrameworkSection>
-            <FrameworkTitle>Returns to R&D: Private and Public Perspectives</FrameworkTitle>
+          <Section style={{ background: 'white', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '1px solid #e8f4f8', marginBottom: '2rem', padding: '2rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', color: '#2c3e50', textAlign: 'center' }}>Returns to R&D: Private and Public Perspectives</h2>
             
             {/* Top sections side by side */}
             <TopSectionGrid>
-              <FrameworkSubsection>
-                <FrameworkSubtitle>Introduction</FrameworkSubtitle>
-                <FrameworkText>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <SubSectionTitle>Introduction</SubSectionTitle>
+                <Paragraph>
                   Research and development investment represents one of the most critical yet analytically complex areas of economic policy. Understanding the returns to R&D requires navigating fundamental tensions between dynamic efficiency—ensuring adequate incentives for innovation—and static efficiency—maximising the diffusion of knowledge throughout the economy.
-                </FrameworkText>
-                <FrameworkText>
+                </Paragraph>
+                <Paragraph>
                   The economic significance of R&D extends far beyond direct productivity gains for investing organisations. Knowledge spillovers, complementarity effects between public and private investment, and the long-term nature of innovation benefits create substantial measurement challenges whilst highlighting the potential for systematic market failures in R&D provision.
-                </FrameworkText>
-              </FrameworkSubsection>
+                </Paragraph>
+              </div>
 
-              <FrameworkSubsection>
-                <FrameworkSubtitle>Policy Rationale</FrameworkSubtitle>
-                <FrameworkText>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <SubSectionTitle>Policy Rationale</SubSectionTitle>
+                <Paragraph>
                   The primary goal of public research is to ensure that a socially desirable amount of research into the right problems happens, by funding research efforts directly or compensating private agents as appropriate to incentivise them. A secondary goal that can often introduce tension with the first aim is trying to disseminate ideas as widely and as quickly as possible to maximise their societal impact.
-                </FrameworkText>
-                <FrameworkText>
+                </Paragraph>
+                <Paragraph>
                   A well-designed innovation policy should balance these trade-offs to ensure we deliver on well-being for all of society over the longer term. This creates a natural role for government intervention through many different tools and approaches, to ensure that innovators are appropriately rewarded for their efforts and that new ideas are encouraged.
-                </FrameworkText>
-              </FrameworkSubsection>
+                </Paragraph>
+              </div>
             </TopSectionGrid>
 
             {/* Framework tabs - collapsed by default */}
@@ -329,73 +325,73 @@ export const CalculatorPage: React.FC = () => {
                 </FrameworkTabs>
 
                 <FrameworkTabContent $isActive={activeFrameworkTab === 'theoreticalFramework'}>
-                  <FrameworkSubtitle>The Economics of Knowledge Production</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>The Economics of Knowledge Production</SubSectionTitle>
+                  <Paragraph>
                     Knowledge exhibits two fundamental characteristics that distinguish it from physical capital. First, ideas are <strong>nonrival</strong>—one person's use of knowledge does not diminish its availability to others. Second, knowledge is often <strong>nonexcludable</strong>—once created, controlling access to ideas proves difficult without specific institutional mechanisms such as patents or secrecy arrangements.
-                  </FrameworkText>
-                  <FrameworkText>
+                  </Paragraph>
+                  <Paragraph>
                     These characteristics create a systematic divergence between private and social returns to R&D investment. Creators capture only a fraction of the total value generated by their innovations, as knowledge spillovers benefit actors throughout the economy. This appropriability problem reduces private incentives for R&D investment below socially optimal levels.
-                  </FrameworkText>
+                  </Paragraph>
 
-                  <FrameworkSubtitle>Dynamic vs Static Efficiency Trade-offs</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Dynamic vs Static Efficiency Trade-offs</SubSectionTitle>
+                  <Paragraph>
                     Innovation policy must balance competing objectives that operate across different time horizons and institutional contexts. Dynamic efficiency requires providing adequate incentives for knowledge creation, often through temporary exclusivity arrangements or direct public funding. Static efficiency demands rapid knowledge diffusion to maximise the immediate productive benefits of new ideas across the entire economy.
-                  </FrameworkText>
+                  </Paragraph>
                 </FrameworkTabContent>
 
                 <FrameworkTabContent $isActive={activeFrameworkTab === 'empiricalEvidence'}>
-                  <FrameworkSubtitle>Public R&D Returns</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Public R&D Returns</SubSectionTitle>
+                  <Paragraph>
                     Contemporary research provides substantial evidence for positive returns to public R&D investment. Frontier Economics' analysis for the UK government reports average returns of approximately 40%, whilst Fieldhouse and Mertens' (2024) analysis of US appropriations data suggests considerably higher returns of 140-210% for non-defence R&D programmes.
-                  </FrameworkText>
+                  </Paragraph>
 
-                  <FrameworkSubtitle>Private-Public R&D Complementarity</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Private-Public R&D Complementarity</SubSectionTitle>
+                  <Paragraph>
                     Research by Moretti, Steinwender, and Van Reenen (2021) using OECD cross-country data indicates that government-financed R&D is associated with increased privately-funded research, with a 10% increase in public R&D corresponding to 5-6% increases in private investment. This finding challenges conventional crowding-out assumptions and suggests potential complementarity effects.
-                  </FrameworkText>
+                  </Paragraph>
 
-                  <FrameworkSubtitle>Knowledge Spillover Evidence</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Knowledge Spillover Evidence</SubSectionTitle>
+                  <Paragraph>
                     Myers and Lanahan (2021) examining US Department of Energy grants demonstrate significant multiplicative effects, with each patent produced by direct recipients associated with three additional patents from spillover beneficiaries. Dyèvre (2024) identifies that publicly-funded patents generate spillovers 2-3 times more impactful on firm productivity than those from private research.
-                  </FrameworkText>
+                  </Paragraph>
 
-                  <FrameworkSubtitle>Private R&D Spillovers</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Private R&D Spillovers</SubSectionTitle>
+                  <Paragraph>
                     Lucking, Bloom, and Van Reenen (2019) provide comprehensive analysis finding that social returns to private R&D exceed private returns by approximately 4:1. Crucially, this research demonstrates that R&D spillovers have not declined in the 21st century, contrary to concerns about increased market concentration reducing knowledge diffusion.
-                  </FrameworkText>
+                  </Paragraph>
                 </FrameworkTabContent>
 
                 <FrameworkTabContent $isActive={activeFrameworkTab === 'technicalMethodology'}>
-                  <FrameworkSubtitle>Mathematical Framework</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Mathematical Framework</SubSectionTitle>
+                  <Paragraph>
                     We employ the standard perpetual inventory methodology to estimate R&D capital stocks and their associated returns over time. This approach treats R&D as an investment that creates a stock of knowledge capital, which generates returns whilst depreciating at a constant rate.
-                  </FrameworkText>
+                  </Paragraph>
                   
-                  <FrameworkSubtitle>Benefit-Cost Ratio Framework</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Benefit-Cost Ratio Framework</SubSectionTitle>
+                  <Paragraph>
                     The benefit-cost ratio (BCR) translates the net present value calculation into a standardised metric:
-                  </FrameworkText>
+                  </Paragraph>
                   
                   <FormulaDisplay 
                     latex="BCR = \rho_{total} \times \frac{1+i}{i+\delta}"
                     explanation="Where ρ_total is the total return rate, i is the discount rate, and δ is the depreciation rate."
                   />
                   
-                  <FrameworkText>
+                  <Paragraph>
                     This formulation reveals how the BCR depends on three critical parameters: the total return rate (ρ_total), the discount rate (i), and the depreciation rate (δ). The term (1+i)/(i+δ) represents the "capitalisation factor"—converting an annual flow of returns into a present value multiple.
-                  </FrameworkText>
+                  </Paragraph>
 
-                  <FrameworkSubtitle>Private R&D Spillover Framework</FrameworkSubtitle>
-                  <FrameworkText>
+                  <SubSectionTitle>Private R&D Spillover Framework</SubSectionTitle>
+                  <Paragraph>
                     Private R&D generates two distinct spillover effects: <strong>Technology spillovers (<FormulaDisplay latex="\psi_2" inline />)</strong> create positive externalities as knowledge enhances productivity of similar firms, whilst <strong>Product market rivalry (<FormulaDisplay latex="\gamma_1" inline />)</strong> creates negative impacts through business stealing effects.
-                  </FrameworkText>
-                  <FrameworkText>
+                  </Paragraph>
+                  <Paragraph>
                     Using Lucking et al. (2019) parameters: Marginal Private Return = 13.6%, Marginal Social Return = 57.7%, creating a Social-to-Private Ratio of 4.24:1. This substantial differential illustrates why market-driven R&D investment levels fall short of socially optimal allocations.
-                  </FrameworkText>
+                  </Paragraph>
                 </FrameworkTabContent>
               </CollapsibleContent>
             </FrameworkTabsContainer>
-          </FrameworkSection>
+          </Section>
 
           <MainCard>
             <Tabs>

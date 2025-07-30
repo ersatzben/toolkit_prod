@@ -15,6 +15,7 @@ export const StickyHeader = styled.header`
   width: 100%;
   box-sizing: border-box;
   padding: 0;
+  background: linear-gradient(90deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
 `;
 
 export const LogoContainer = styled.div`
@@ -52,18 +53,25 @@ export const HeaderGradient = styled.div`
   flex-grow: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+`;
+
+export const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, ${newBrandColors.darkGreen} 0%, ${newBrandColors.darkBlue} 100%);
-  padding: 0 25px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem;
 
   ${media.tablet} {
-    padding: 0 15px;
+    padding: 0 1.5rem;
   }
 
   ${media.mobile} {
-    padding: 0 10px;
-    /* On mobile, logo is hidden so gradient takes full width */
-    background: ${newBrandColors.darkGreen}; /* Solid color instead of gradient for simplicity */
+    padding: 0 1rem;
   }
 `;
 
@@ -72,6 +80,7 @@ export const HeaderNav = styled.nav`
   align-items: center;
   gap: 15px;
   margin-left: auto;
+  position: relative;
 
   ${media.tablet} {
     gap: 12px;
@@ -157,20 +166,32 @@ export const MobileNavMenu = styled.div<{ $isOpen?: boolean }>`
   display: block;
   position: fixed;
   top: ${headerHeight};
-  right: 0;
+  right: calc(50vw - 500px + 2rem);
   background: linear-gradient(180deg, ${newBrandColors.darkBlue} 0%, ${newBrandColors.darkGreen} 100%);
-  border-radius: 0 0 0 12px;
+  border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transform: translateX(${props => props.$isOpen ? '0' : '100%'});
-  transition: transform 0.3s ease;
+  transform: translateY(${props => props.$isOpen ? '0' : '-20px'});
+  opacity: ${props => props.$isOpen ? '1' : '0'};
+  visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
+  transition: all 0.2s ease;
   z-index: 1001;
   min-width: 200px;
+  pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
+
+  @media (max-width: 1064px) {
+    right: 2rem;
+  }
+
+  ${media.tablet} {
+    right: 1.5rem;
+  }
 
   ${media.mobile} {
     padding: 15px;
     min-width: 180px;
     max-width: 250px;
+    right: 1rem;
   }
 `;
 

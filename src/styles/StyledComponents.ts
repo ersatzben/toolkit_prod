@@ -333,43 +333,6 @@ export const TargetabilityBox = styled.div`
   }
 `;
 
-export const FurtherReadingList = styled.ul`
-  list-style-type: disc;
-  padding-left: 25px;
-  margin-top: 16px;
-
-  ${media.tablet} {
-    padding-left: 20px;
-  }
-`;
-
-export const FurtherReadingListItem = styled.li`
-  margin-bottom: 12px;
-  line-height: 1.6;
-
-  ${media.tablet} {
-    margin-bottom: 10px;
-  }
-`;
-
-export const FurtherReadingLink = styled.a`
-  color: ${newBrandColors.darkBlue};
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-
-  &:hover,
-  &:focus {
-    color: ${newBrandColors.lightBlue};
-    text-decoration: underline;
-  }
-`;
-
-export const FurtherReadingText = styled.span`
-  color: ${newBrandColors.charcoal};
-  font-weight: 500;
-`;
-
 export const ToolLinkList = styled.ul`
   list-style: none;
   padding: 0;
