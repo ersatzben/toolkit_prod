@@ -47,7 +47,7 @@ export const FurtherReadingPage: React.FC = () => {
     <Page title="UK R&D Policy Toolkit" subtitle="Guide to Evaluating R&D Returns">
       <MainContent>
         <TitleContainer>
-          <PageTitle>Returns to R&D: Private and Public Perspectives</PageTitle>
+          <PageTitle>Guide to evaluating the economic returns of private and public R&D</PageTitle>
         </TitleContainer>
         <Container>
           <Section>

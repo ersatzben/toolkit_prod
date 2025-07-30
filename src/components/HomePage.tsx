@@ -200,13 +200,13 @@ export const HomePage: React.FC = () => {
               <OptionIcon>📚</OptionIcon>
               <OptionTitle>Guide to evaluating R&D returns</OptionTitle>
               <OptionDescription>
-                <strong>For policymakers and analysts:</strong> A guide to evaluating the returns from R&D investments with research-backed frameworks.
+                <strong>For policymakers and analysts:</strong> A guide to evaluating the economic returns from R&D investments with research-backed frameworks.
               </OptionDescription>
             </OptionCard>
 
             <OptionCard to="/calculator">
               <OptionIcon>📊</OptionIcon>
-              <OptionTitle>Calculate return on investment from R&D</OptionTitle>
+              <OptionTitle>Calculate the benefit-cost ratio of R&D investment</OptionTitle>
               <OptionDescription>
                 <strong>For analysts:</strong> Use our interactive calculator to assess the potential returns 
                 and impact of R&D investments.

@@ -270,7 +270,7 @@ export const CalculatorPage: React.FC = () => {
       <CalculatorContainer>
         <Container>
           <Section style={{ background: 'white', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '1px solid #e8f4f8', marginBottom: '2rem', padding: '2rem' }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', color: '#2c3e50', textAlign: 'center' }}>Returns to R&D: Private and Public Perspectives</h2>
+            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', color: '#2c3e50', textAlign: 'center' }}>Calculate the benefit-cost ratio (BCR) of R&D investment</h2>
             
             {/* Top sections side by side */}
             <TopSectionGrid>
